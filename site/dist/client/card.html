@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101110" />
+  <title>AP Music &amp; Audio — Business Card</title>
+  <style>
+    :root { color-scheme: dark; font-family: "SFMono-Regular", Consolas, monospace; background: #101110; color: #e8e3da; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: #101110; }
+    .shell { min-height: 100vh; padding: 48px 24px; display: grid; place-items: center; gap: 26px; }
+    .note { max-width: 560px; margin: 0; color: #aaa7a0; font-size: .77rem; line-height: 1.6; text-align: center; }
+    .cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
+    .card { width: 3.5in; height: 2in; padding: .22in; position: relative; overflow: hidden; background: #101110; border: 1px solid rgba(232,227,218,.34); }
+    .card::before { content: ""; position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(rgba(232,227,218,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(232,227,218,.06) 1px, transparent 1px); background-size: 18px 18px; }
+    .card > * { position: relative; }
+    .front { display: flex; flex-direction: column; justify-content: space-between; }
+    .wordmark { margin: 0; font-size: .15in; letter-spacing: .12em; }
+    .front h1 { max-width: 2.65in; margin: 0; font: 400 .28in/1 Georgia, serif; letter-spacing: -.035em; }
+    .front footer, .back footer { display: flex; justify-content: space-between; color: #aaa7a0; font-size: .075in; }
+    .back { display: grid; grid-template-columns: 1fr 1.15fr; gap: .18in; align-items: end; }
+    .back h2 { margin: 0; color: #b46f68; font-size: .22in; font-weight: 400; }
+    .back p { margin: .07in 0 0; color: #c6c0b6; font-size: .09in; line-height: 1.5; }
+    .code { align-self: stretch; display: grid; place-items: center; border-left: 1px solid rgba(232,227,218,.16); color: #7e9279; font-size: .1in; letter-spacing: .06em; text-align: center; }
+    .code strong { display: block; margin-top: .08in; color: #e8e3da; font-size: .11in; font-weight: 400; }
+    @page { size: 3.5in 2in; margin: 0; }
+    @media print { body { background: #101110; } .shell { padding: 0; display: block; } .note { display: none; } .cards { display: block; } .card { break-after: page; border: 0; } .card:last-child { break-after: auto; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <p class="note">Print at 100%. Front and back are separate pages; add a QR only after the final public destination is approved.</p>
+    <div class="cards">
+      <section class="card front" aria-label="Business card front">
+        <p class="wordmark">AP MUSIC &amp; AUDIO</p>
+        <h1>Hear it.<br />Rebuild it.<br />Make it useful.</h1>
+        <footer><span>Payton + Alex</span><span>Louisville + remote</span></footer>
+      </section>
+      <section class="card back" aria-label="Business card back">
+        <div><h2>Piano<br />Sound<br />Code</h2><p>Performance · lessons · transcription · recording · live audio</p></div>
+        <div class="code"><span>VISIT</span><strong>apmusicaudio.com</strong></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
