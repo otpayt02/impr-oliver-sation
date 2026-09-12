@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP Music & Audio — Improvisation Studio</title>
+  <meta name="description" content="Ear-driven transcription, arrangement, and teaching. Improvisation as practice and philosophy. Louisville, KY and online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="brand" href="#hero"><span class="brand-ap">AP</span>Music & Audio</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-small" href="#contact">Book a session</a>
+  </header>
+
+  <section class="hero" id="hero">
+    <canvas id="binary-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="kicker">Payton & Alex · Louisville, KY</p>
+      <h1>Improvisation is the<br /><em>sound of thinking.</em></h1>
+      <p class="lede">Ear-driven transcription, arrangement, and teaching — built by two musicians who treat improvisation as both practice and philosophy.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Book a session</a>
+        <button class="btn btn-ghost" id="play-chord" type="button">♪ Hear a Cmaj9</button>
+      </div>
+      <p class="scroll-hint">Scroll — watch the code become music ↓</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="services">
+      <p class="kicker">What we do</p>
+      <h2>We hear it. We write it. You play it.</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <h3>Ear-Driven Transcription</h3>
+          <p>Send us any recording — a voice memo, a live set, a YouTube link. We listen, we notate. You get accurate sheet music and chord charts, in your key.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Arrangement</h3>
+          <p>Piano reductions, full-band charts, choir parts, solo-instrument adaptations. We shape the piece for the players you actually have.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Improvisation Coaching</h3>
+          <p>One-on-one and small-group lessons in piano, theory, and the craft of thinking in real time. From first chord changes to advanced language.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Audio Production</h3>
+          <p>Recording, editing, mixing, and cleanup for performances, demos, and worship sets. Polished sound, fast turnaround.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-philosophy" id="philosophy">
+      <p class="kicker">The philosophy</p>
+      <blockquote class="quote reveal">
+        <p>“Improvisation isn’t the absence of a plan — it’s <em>listening faster than the music</em>.”</p>
+      </blockquote>
+      <div class="philosophy-row">
+        <div class="reveal">
+          <h3>As practice</h3>
+          <p>Every transcription and arrangement starts the way our own playing does: by ear, on purpose, then confirmed on the page. The chart you receive has been played before it was printed.</p>
+        </div>
+        <div class="reveal">
+          <h3>As philosophy</h3>
+          <p>A written chart and a real-time solo are the same skill viewed at different speeds. That belief shapes how we teach, arrange, and deliver.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <p class="kicker">The duo</p>
+      <h2>Two sets of ears, one standard</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <h3>Oliver Payton</h3>
+          <p>Pianist, improviser, and systems engineer. Church music director with a producer’s ear and a builder’s habit: if it can be played, polished, or automated better, it will be.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Alex</h3>
+          <p>Musician and arranger with a gift for hearing what a piece wants to become — and the patience to get every part there. Update this bio to taste.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-contact" id="contact">
+      <p class="kicker">Get in touch</p>
+      <h2>Your first chart is one email away</h2>
+      <p class="contact-lede">Tell us the song, the key, and the deadline — we’ll take it from there.</p>
+      <a class="btn btn-primary btn-large" href="mailto:hello@apmusic.audio">hello@apmusic.audio</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> AP Music & Audio — improvisation as practice and philosophy.</p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

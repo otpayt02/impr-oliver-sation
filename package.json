@@ -1,0 +1,15 @@
+{
+  "name": "impr-oliver-sation",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AP Music & Audio — cinematic site: binary-to-music scroll animation, ear-driven transcription/arrangement/teaching.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
