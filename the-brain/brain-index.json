@@ -1,0 +1,4 @@
+{
+  "_comment": "Source registry (handoff §3): each entry = { path, date, type, era, devices }",
+  "sources": []
+}

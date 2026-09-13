@@ -1,0 +1,26 @@
+# daily-blog.yml (handoff §3/§11)
+# Calendar: Mon–Sat 06:30 ET — draft blog → queue/ (workflow writes ONLY to queue/)
+name: daily-blog
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 10 * * 1-6" # 06:30 ET (EST). EDT runs an hour late; acceptable, or adjust seasonally.
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      # TODO(⟨OLIVER FILLS⟩): wire agents/daily-blog.md → OpenRouter free model (fallback local Ollama).
+      # HARD RULE: output path MUST be under queue/. Never touch blog/ or published/.
+      - name: scaffold day's draft skeleton in queue/
+        run: |
+          mkdir -p queue
+          printf '# Blog draft %s\n\n- 1 teachable line: ⟨PENDING⟩\n- 1 practice action: ⟨PENDING⟩\n- 1 deal slot (clearly labeled): ⟨PENDING⟩\n- current artifact link: ⟨PENDING⟩\n' "$(date +%F)" > "queue/blog-$(date +%F).md"
+      - name: commit to queue/ only
+        run: |
+          git config user.name "ap-bot"; git config user.email "bot@localhost"
+          git add queue/
+          git commit -m "queue: blog draft $(date +%F)" || echo "nothing new"
+          git push

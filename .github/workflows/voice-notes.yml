@@ -1,0 +1,18 @@
+# voice-notes.yml (handoff §3/§11)
+# Trigger: push to voice/corpus → whisper-transcribe → text
+# Related: 1st Sat 11:00 ET monthly voice-corpus + constants audit (manual)
+name: voice-notes
+on:
+  workflow_dispatch:
+  push:
+    paths: ["voice/corpus/**"]
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO(⟨OLIVER FILLS⟩): faster-whisper transcription step.
+      # HARD RULE: transcripts land in queue/ or voice/corpus/<name>.txt — nowhere public.
+      # Voice clone: no clone audio ships until Oliver approves a sample (gate, handoff §8).
+      - name: placeholder
+        run: echo "whisper transcription pipeline not wired yet — see TODO above"

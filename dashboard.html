@@ -1,0 +1,62 @@
+<!-- dashboard.html (handoff §9/§11) — one screen, no auth, reads JSON state files.
+     Queue contents come from queue/index.json (manual index; a static page can't list a directory). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Media System — Dashboard</title>
+<style>
+  body { background: #07070b; color: #e5e7eb; font-family: Georgia, serif; margin: 0; padding: 32px; }
+  h1 { color: #a855f7; font-weight: normal; letter-spacing: 0.05em; }
+  section { margin: 24px 0; padding: 16px; border: 1px solid #1f2937; border-radius: 8px; }
+  h2 { font-family: monospace; font-size: 13px; letter-spacing: 0.3em; color: #60a5fa; margin-top: 0; }
+  .sound { color: #4ade80; } .rush { color: #60a5fa; }
+  table { border-collapse: collapse; width: 100%; font-family: monospace; font-size: 13px; }
+  td, th { text-align: left; padding: 4px 8px; border-bottom: 1px solid #1f2937; }
+  .empty { color: #6b7280; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>AP Music &amp; Audio — Ops Screen</h1>
+
+<section><h2>TOPICS BY STATUS</h2><div id="topics">loading…</div></section>
+<section><h2>QUEUE (awaiting Oliver)</h2><div id="queue">loading…</div></section>
+<section><h2>LATEST BLOG DRAFT</h2><div id="blog" class="empty">check blog/ — static listing not available from a local page</div></section>
+<section><h2>VOICE CORPUS</h2><div id="corpus" class="empty">minutes recorded: ⟨manual entry⟩</div></section>
+<section><h2>PUBLISHED</h2><div id="published">loading…</div></section>
+<section><h2>CONSTANTS</h2><div id="constants" class="empty">last audit: ⟨manual entry — 1st Sat 11:00 ET⟩</div></section>
+
+<script>
+async function load(url) {
+  try { const r = await fetch(url); return r.ok ? await r.json() : null; } catch (e) { return null; }
+}
+function esc(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+(async () => {
+  const t = await load('topics/topics.json');
+  const el = document.getElementById('topics');
+  if (t && t.topics) {
+    const byStatus = {};
+    for (const x of t.topics) (byStatus[x.status] = byStatus[x.status] || []).push(x);
+    el.innerHTML = Object.entries(byStatus).map(([s, xs]) =>
+      `<h3 style="color:#c084fc">${esc(s)} (${xs.length})</h3><table>` +
+      xs.map(x => `<tr><td class="${x.channel}">${esc(x.channel)}</td><td>${esc(x.title)}</td><td>${esc(x.target_date || '')}</td></tr>`).join('') +
+      '</table>').join('');
+  } else el.innerHTML = '<span class="empty">topics/topics.json unreachable (serve the repo root, e.g. python -m http.server)</span>';
+
+  const q = await load('queue/index.json');
+  document.getElementById('queue').innerHTML =
+    (q && q.pending && q.pending.length)
+      ? '<table>' + q.pending.map(x => `<tr><td>${esc(x.type)}</td><td>${esc(x.title)}</td><td>${esc(x.created || '')}</td></tr>`).join('') + '</table>'
+      : '<span class="empty">queue empty</span>';
+
+  const p = await load('published/log.json');
+  document.getElementById('published').innerHTML =
+    (p && p.length)
+      ? '<table>' + p.map(x => `<tr><td class="${x.channel}">${esc(x.channel)}</td><td>${esc(x.title)}</td><td>${esc(x.published_at || '')}</td></tr>`).join('') + '</table>'
+      : '<span class="empty">nothing shipped yet</span>';
+})();
+</script>
+</body>
+</html>

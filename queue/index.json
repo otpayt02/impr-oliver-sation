@@ -1,0 +1,4 @@
+{
+  "_comment": "Manual index of items awaiting approval; dashboard.html reads this. Entries: { id, type, title, path, created }",
+  "pending": []
+}

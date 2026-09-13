@@ -1,0 +1,17 @@
+{
+  "_schema": "{ channel: 'sound|rush', title, hook, artifact: 'path-or-null', register: 'homiletic|vent-architect|analytical', funnel_stage: 'artifact|newsletter|community|mini-course|big-course', status: 'idea|approved|scripted|voiced|assembled|queued|published', target_date } (handoff §9)",
+  "topics": [
+    { "channel": "sound", "title": "Improvise Your First Piano Thing in One Hour — No Sheet Music", "hook": "We are all guilty of it — you sit at the piano, noodle for forty minutes, and nothing you played is a song.", "artifact": "funnel/artifacts/first-hour-improv-sheet.pdf", "register": "homiletic", "funnel_stage": "artifact", "status": "approved", "target_date": "2026-09-13" },
+    { "channel": "sound", "title": "Voicemail to Song", "hook": "A phone memo becomes a record.", "artifact": "funnel/artifacts/voicemail-to-song-kit.md", "register": "homiletic", "funnel_stage": "artifact", "status": "idea", "target_date": null },
+    { "channel": "sound", "title": "Sunday Morning Survival", "hook": "Chord pack for church music directors who got called Saturday night.", "artifact": "funnel/artifacts/sunday-morning-survival.md", "register": "homiletic", "funnel_stage": "artifact", "status": "idea", "target_date": null },
+    { "channel": "sound", "title": "Mix on Free Tools", "hook": "A mix that sits, with $0 of plugins.", "artifact": null, "register": "analytical", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "sound", "title": "Restore Old Tapes", "hook": "Recordings that shine again.", "artifact": null, "register": "analytical", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "sound", "title": "Chord Charts from Scratch", "hook": "Chords that move, written by ear.", "artifact": null, "register": "homiletic", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "MidRush Router Tour", "hook": "The layer that lets two things touch safely.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "Free Model Routing", "hook": "OpenRouter free models + local Ollama fallback.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "Whisper Ingest Pipeline", "hook": "Voice memos → text → the brain, offline.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "XTTS Voice Clone Build", "hook": "Your own voice, zero-shot, free — after sign-off only.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "Daily Blog Automation", "hook": "6:30 AM drafts that still wait for a human click.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null },
+    { "channel": "rush", "title": "Brain Dashboard", "hook": "One screen, every stage's state.", "artifact": null, "register": "vent-architect", "funnel_stage": "newsletter", "status": "idea", "target_date": null }
+  ]
+}

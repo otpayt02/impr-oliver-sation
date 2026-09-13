@@ -1,0 +1,24 @@
+# topic-scout.yml (handoff §3/§11)
+# Calendar: Sun 23:30 ET Brain Ingest · Thu — refill topics.json when < 6 pending
+# Related: Tue 21:00 ET Brain Delta · Wed 21:00 ET Release Gate (manual, not automated)
+name: topic-scout
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 3 * * 1,5" # Sun 23:30 ET + Thu 23:30 ET (UTC next day)
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO(⟨OLIVER FILLS⟩): run agents/topic-scout.md against topics/topics.json + published/log.json.
+      # Proposals go to queue/topic-proposals-<date>.md for approval — never edit topics.json directly.
+      - name: count pending topics
+        run: |
+          PENDING=$(grep -c '"status": "idea"' topics/topics.json || true)
+          echo "pending_ideas=$PENDING"
+          if [ "$PENDING" -lt 6 ]; then
+            mkdir -p queue
+            echo "# Topic refill needed — $(date +%F)" > "queue/topic-proposals-$(date +%F).md"
+            echo "Pending ideas: $PENDING (< 6). Run topic-scout.md and append proposals here." >> "queue/topic-proposals-$(date +%F).md"
+          fi
