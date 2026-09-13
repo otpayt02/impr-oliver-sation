@@ -1,4 +1,6 @@
-export const PALETTE = ['#79906f', '#86809c', '#a66568', '#ac9983', '#6e7f7a'];
+// Large canvas elements stay muted; the saturated spectrum is reserved for
+// the compact landing words and small, high-attention interaction states.
+export const PALETTE = ['#3d8b79', '#397e88', '#3c7097', '#4b648f', '#625c91', '#73578a'];
 
 export function seededRandom(seed) {
   let state = seed >>> 0;

@@ -38,24 +38,70 @@ test('a ready booking brief can be copied locally without a send path', async ()
   assert.doesNotMatch(source, /fetch\(/);
 });
 
-test('the broad AP Music & Audio services are packaged into four clear pillars', async () => {
+test('the AP Music & Audio services are grouped by buyer outcome', async () => {
   const source = await readFile(new URL('./src/App.jsx', root), 'utf8');
-  assert.match(source, /Performance & events/);
-  assert.match(source, /Lessons & ear training/);
-  assert.match(source, /Engineering & production/);
-  assert.match(source, /Transcription & music tools/);
-  assert.match(source, /First Listen remains the smallest paid starting point/);
+  assert.match(source, /Hear the idea/);
+  assert.match(source, /Make it playable/);
+  assert.match(source, /Make it heard/);
+  assert.match(source, /First Listen is the clearest paid starting point/);
 });
 
-test('the public-facing SEO metadata describes the service pillars without inventing a domain', async () => {
+test('the public-facing SEO metadata describes buyer outcomes without inventing a domain', async () => {
   const source = await readFile(new URL('./index.html', root), 'utf8');
   assert.match(source, /application\/ld\+json/);
   assert.match(source, /hasOfferCatalog/);
-  assert.match(source, /Performance &amp; events|Performance & events/);
-  assert.match(source, /Lessons &amp; ear training|Lessons & ear training/);
-  assert.match(source, /Engineering &amp; production|Engineering & production/);
-  assert.match(source, /Transcription &amp; music tools|Transcription & music tools/);
+  assert.match(source, /Hear the idea/);
+  assert.match(source, /Make it playable/);
+  assert.match(source, /Make it heard/);
   assert.doesNotMatch(source, /apmusicaudio\.com/);
+});
+
+test('the first viewport names the audience, uses only curated service sentences, and offers three starting points', async () => {
+  const source = await readFile(new URL('./src/App.jsx', root), 'utf8');
+  assert.match(source, /For artists, students, and event hosts/);
+  assert.match(source, /AP Music &amp; Audio helps artists, students, and event hosts/);
+  assert.match(source, /landingScenes/);
+  assert.match(source, /Explore/);
+  assert.match(source, /Share/);
+  assert.match(source, /Bring/);
+  assert.match(source, /Understand/);
+  assert.match(source, /Build/);
+  assert.match(source, /Perform/);
+  assert.match(source, /Record/);
+  assert.match(source, /your/);
+  assert.match(source, /into a playable map/);
+  assert.match(source, /with a practice plan/);
+  assert.match(source, /through a First Listen/);
+  assert.match(source, /whole scenes instead of three independent word pools/);
+  assert.match(source, /setup/);
+  assert.match(source, /idea/);
+  assert.match(source, /What are you trying to make possible/);
+  assert.match(source, /I have an idea/);
+  assert.match(source, /I need it playable/);
+  assert.match(source, /I need the room handled/);
+  assert.match(source, /A custom piano response, key \+ chord map, and one focused revision/);
+});
+
+test('the hero signal moves from chaotic music notation into controlled wave families', async () => {
+  const source = await readFile(new URL('./src/SignalField.jsx', root), 'utf8');
+  assert.match(source, /ASCII_DITHER/);
+  assert.match(source, /MUSIC_GLYPHS/);
+  assert.match(source, /CHAOS_PALETTE/);
+  assert.match(source, /ORDERED_PALETTE/);
+  assert.match(source, /drawWaveFamilies/);
+  assert.match(source, /organized sine and cosine wave families/);
+});
+
+test('the fixed hero makes all six service stages and both studio-focus tabs available', async () => {
+  const source = await readFile(new URL('./src/App.jsx', root), 'utf8');
+  assert.match(source, /const journeyStages/);
+  assert.match(source, /number: '01'/);
+  assert.match(source, /number: '06'/);
+  assert.match(source, /Send the starting point/);
+  assert.match(source, /Choose the people and scope/);
+  assert.match(source, /Oliver/);
+  assert.match(source, /Alex/);
+  assert.match(source, /jumpToStage/);
 });
 
 test('the launch gate names the owner decisions required before monetization', async () => {

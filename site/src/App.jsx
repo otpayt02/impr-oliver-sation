@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { SignalField } from './SignalField.jsx';
 import { bookingDestination, donationDestination } from './destination-config.js';
+import { StudioExperience } from './StudioExperience.jsx';
 
 const chapters = [
   { id: 'input', number: '01', verb: 'input', eyebrow: 'A sound, a moment, a rough idea.', title: 'Give us the thing in your head.', copy: 'Drop a reference, describe a feeling, or name the moment. We listen for key, tempo, texture, structure, and intent.' },
@@ -8,6 +9,15 @@ const chapters = [
   { id: 'play', number: '03', verb: 'play', eyebrow: 'No genre box.', title: 'Then the map becomes music.', copy: 'Rap, hip-hop, emo, pop, gospel, classical, and the strange spaces between them—rebuilt by ear and shaped for your use.' },
   { id: 'teach', number: '04', verb: 'teach', eyebrow: 'Make the invisible repeatable.', title: 'Learn the way the song actually moves.', copy: 'Piano, drums, guitar, bass, improvisation, ear training, and favorite-song lessons—built around hearing, not memorizing disconnected rules.' },
   { id: 'make', number: '05', verb: 'make', eyebrow: 'From performance to signal.', title: 'Record it. Transcribe it. Engineer it.', copy: 'Custom piano tracks, sampling, production, sheet music, chord charts, MIDI, live sound, event audio, and small music software tools.' },
+];
+
+const journeyStages = [
+  { id: 'input', number: '01', label: 'Send the starting point', title: 'Give us a song, voice memo, or rough idea.', value: 'You get a focused musical read: key, tempo, feel, and the clearest next move.' },
+  { id: 'hear', number: '02', label: 'Hear what is inside it', title: 'Find the harmony, rhythm, and structure.', value: 'We turn the sound you are hearing into choices you can react to—not vague music talk.' },
+  { id: 'play', number: '03', label: 'Make it playable', title: 'Get a version your hands or band can use.', value: 'Choose a chord map, transcription, notation, MIDI, or a custom piano response.' },
+  { id: 'teach', number: '04', label: 'Make it repeatable', title: 'Practice the part that matters.', value: 'Use a goal-first lesson or plan built around the song, instrument, and result you want.' },
+  { id: 'make', number: '05', label: 'Make the moment land', title: 'Record it, perform it, or run the room.', value: 'Bring in piano, production, recording support, or event sound sized to the people listening.' },
+  { id: 'book', number: '06', label: 'Choose the people and scope', title: 'Start with the smallest useful session.', value: 'Pick First Listen, a playable map, or a one-to-one session, then tell us what needs to happen.' },
 ];
 
 function PianoCue() {
@@ -43,14 +53,117 @@ function MotionControl({ motion, setMotion, gridReact, setGridReact }) {
   );
 }
 
-function StoryNav({ progress }) {
-  const active = Math.min(chapters.length, Math.floor(progress * 6));
+function StoryNav({ active, onStagePick }) {
   return (
     <nav className="story-nav" aria-label="AP Music process">
-      {['input', 'hear', 'play', 'teach', 'make', 'book'].map((item, index) => (
-        <a className={index === active ? 'is-active' : ''} key={item} href={`#${item}`}><span>{item}</span><i aria-hidden="true" /></a>
+      {journeyStages.map((stage, index) => (
+        <button className={index === active ? 'is-active' : ''} key={stage.id} type="button" onClick={() => onStagePick(index)}><span>{stage.number} / {stage.id}</span><i aria-hidden="true" /></button>
       ))}
     </nav>
+  );
+}
+
+function JourneyDeck({ stage, director, setDirector }) {
+  return (
+    <aside className="journey-deck" aria-live="polite">
+      <p className="journey-index">{stage.number} / 06 · {stage.label}</p>
+      <h2>{stage.title}</h2>
+      <p>{stage.value}</p>
+      {stage.id === 'book' && (
+        <div className="director-tabs" role="tablist" aria-label="Choose a studio focus">
+          <button className={director === 'oliver' ? 'is-active' : ''} type="button" role="tab" aria-selected={director === 'oliver'} onClick={() => setDirector('oliver')}>
+            <strong>Oliver</strong><span>Piano + musical direction</span>
+          </button>
+          <button className={director === 'alex' ? 'is-active' : ''} type="button" role="tab" aria-selected={director === 'alex'} onClick={() => setDirector('alex')}>
+            <strong>Alex</strong><span>Audio + production direction</span>
+          </button>
+        </div>
+      )}
+      {stage.id === 'book' && <a className="journey-cta" href="#offer">Choose a service →</a>}
+    </aside>
+  );
+}
+
+const heroModes = [
+  {
+    id: 'idea',
+    tab: 'I have an idea',
+    label: 'START HERE / FIRST LISTEN',
+    title: 'Turn one sound into a clear next step.',
+    detail: 'A custom piano response, key + chord map, and one focused revision from one song, voice memo, or feeling.',
+    meta: '$95 draft starting point',
+    target: '#offer',
+    cta: 'See First Listen',
+  },
+  {
+    id: 'playable',
+    tab: 'I need it playable',
+    label: 'TRANSCRIPTION / LESSONS',
+    title: 'Get the version your hands can use.',
+    detail: 'Transcription, chord charts, MIDI, or goal-first lessons that make a song repeatable for you, your band, or your students.',
+    meta: 'Blueprints + practice',
+    target: '#services',
+    cta: 'See playable work',
+  },
+  {
+    id: 'room',
+    tab: 'I need the room handled',
+    label: 'PERFORMANCE / AUDIO',
+    title: 'Make the moment land in the room.',
+    detail: 'Live piano, recording, production, and event sound shaped to the people listening—not a generic package.',
+    meta: 'Louisville + remote',
+    target: '#services',
+    cta: 'See room + studio work',
+  },
+];
+
+// These are intentionally whole scenes instead of three independent word pools.
+// Every shuffle is a service promise AP Music & Audio can actually fulfill.
+const landingScenes = [
+  { verb: 'Explore', subject: 'sound', predicate: 'through music.' },
+  { verb: 'Share', subject: 'voice', predicate: 'in the room.' },
+  { verb: 'Bring', subject: 'idea', predicate: 'into focus.' },
+  { verb: 'Understand', subject: 'song', predicate: 'at the piano.' },
+  { verb: 'Shape', subject: 'plan', predicate: 'into a playable map.' },
+  { verb: 'Hear', subject: 'setup', predicate: 'in the mix.' },
+  { verb: 'Build', subject: 'confidence', predicate: 'with a practice plan.' },
+  { verb: 'Perform', subject: 'moment', predicate: 'for the people listening.' },
+  { verb: 'Record', subject: 'story', predicate: 'with room to breathe.' },
+  { verb: 'Make', subject: 'room', predicate: 'sound like it matters.' },
+  { verb: 'Find', subject: 'next step', predicate: 'through a First Listen.' },
+  { verb: 'Turn', subject: 'reference', predicate: 'into something playable.' },
+];
+
+function nextPhraseIndex(length, current) {
+  if (length < 2) return 0;
+  const candidate = Math.floor(Math.random() * (length - 1));
+  return candidate >= current ? candidate + 1 : candidate;
+}
+
+function LandingPhrase({ motion }) {
+  const [sceneIndex, setSceneIndex] = useState(0);
+
+  useEffect(() => {
+    if (!motion) return undefined;
+    const interval = window.setInterval(() => {
+      setSceneIndex((current) => nextPhraseIndex(landingScenes.length, current));
+    }, 2200);
+    return () => window.clearInterval(interval);
+  }, [motion]);
+
+  const scene = landingScenes[sceneIndex];
+  const copy = `${scene.verb} your ${scene.subject} ${scene.predicate}`;
+  return (
+    <h1 className="landing-phrase" aria-label={copy}>
+      <span className="landing-phrase-line" aria-hidden="true">
+        <span className="phrase-word phrase-verb" key={`verb-${sceneIndex}`}>{scene.verb}</span>{' '}
+        <span className="phrase-static">your</span>
+      </span>
+      <span className="landing-phrase-line" aria-hidden="true">
+        <span className="phrase-word phrase-object" key={`subject-${sceneIndex}`}>{scene.subject}</span>{' '}
+        <span className="phrase-word phrase-predicate" key={`predicate-${sceneIndex}`}>{scene.predicate}</span>
+      </span>
+    </h1>
   );
 }
 
@@ -60,6 +173,19 @@ function Hero() {
   const reduceMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const [motion, setMotion] = useState(!reduceMotion);
   const [gridReact, setGridReact] = useState(true);
+  const [heroMode, setHeroMode] = useState('idea');
+  const [director, setDirector] = useState('oliver');
+  const [arrival, setArrival] = useState(reduceMotion);
+  const activeMode = heroModes.find((mode) => mode.id === heroMode) || heroModes[0];
+  const activeStage = Math.min(journeyStages.length - 1, Math.floor(progress * journeyStages.length));
+
+  const jumpToStage = (index) => {
+    const element = heroRef.current;
+    if (!element) return;
+    const rect = element.getBoundingClientRect();
+    const runway = Math.max(1, rect.height - window.innerHeight);
+    window.scrollTo({ top: window.scrollY + rect.top + runway * (index / (journeyStages.length - 1)), behavior: 'smooth' });
+  };
 
   useEffect(() => {
     let frame;
@@ -76,24 +202,63 @@ function Hero() {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    if (!motion) {
+      setArrival(true);
+      return undefined;
+    }
+    setArrival(false);
+    const frame = window.requestAnimationFrame(() => setArrival(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [motion]);
+
   return (
     <section className="hero-runway" ref={heroRef} aria-label="Binary becomes music">
-      <div className="hero-sticky">
+      <div className="hero-sticky" style={{ '--scroll-progress': progress }}>
         <header className="site-header">
           <a className="wordmark" href="#top">AP MUSIC &amp; AUDIO</a>
           <div className="header-actions"><span>Louisville + remote</span><a className="button quiet" href="#book">Book the work</a></div>
         </header>
         <div className="hero-copy" id="top">
-          <p className="command"><span aria-hidden="true">&gt;</span> play what I just heard<span className="cursor" aria-hidden="true" /></p>
-          <p className="hero-kicker">No preset. No genre box.</p>
-          <h1>Hear it. Rebuild it.<br />Make it useful.</h1>
-          <a className="button" href="#input">Begin the sequence</a>
+          <p className="command"><span aria-hidden="true">&gt;</span> AP / music &amp; audio<span className="cursor" aria-hidden="true" /></p>
+          <p className="hero-kicker">For artists, students, and event hosts.</p>
+          <LandingPhrase motion={motion} />
+          <p className="hero-summary">AP Music &amp; Audio helps artists, students, and event hosts turn a song, setup, or rough idea into piano performance, a playable map, recording support, or room-ready sound.</p>
+          <div className="hero-path-picker" aria-label="Choose the result you need">
+            <p className="hero-picker-label">What are you trying to make possible?</p>
+            <div className="hero-mode-tabs" role="tablist" aria-label="Starting points">
+              {heroModes.map((mode) => (
+                <button
+                  className={heroMode === mode.id ? 'hero-mode-tab is-active' : 'hero-mode-tab'}
+                  key={mode.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={heroMode === mode.id}
+                  onClick={() => setHeroMode(mode.id)}
+                >
+                  {mode.tab}
+                </button>
+              ))}
+            </div>
+            <div className="hero-mode-panel" key={activeMode.id} role="tabpanel">
+              <div>
+                <p className="hero-mode-label">{activeMode.label}</p>
+                <h2>{activeMode.title}</h2>
+                <p>{activeMode.detail}</p>
+              </div>
+              <div className="hero-mode-action">
+                <span>{activeMode.meta}</span>
+                <a className="button" href={activeMode.target}>{activeMode.cta}</a>
+              </div>
+            </div>
+          </div>
         </div>
         <MotionControl motion={motion} setMotion={setMotion} gridReact={gridReact} setGridReact={setGridReact} />
-        <SignalField progress={motion ? progress : 1} animate={motion} reactive={gridReact} />
-        <div className="signal-labels" aria-hidden="true"><span>binary</span><span>transcription</span><span>music</span></div>
+        <SignalField progress={motion ? progress : 1} animate={motion} reactive={gridReact} arrival={arrival} />
+        <div className="signal-labels" aria-hidden="true"><span>raw notation</span><span>playable signal</span><span>room-ready music</span></div>
         <PianoCue />
-        <StoryNav progress={progress} />
+        <JourneyDeck stage={journeyStages[activeStage]} director={director} setDirector={setDirector} />
+        <StoryNav active={activeStage} onStagePick={jumpToStage} />
         <p className="rotation-note">Don Toliver is in the rotation. <span aria-hidden="true">||||</span></p>
         <div className="scroll-meter" aria-hidden="true"><span style={{ width: `${progress * 100}%` }} /></div>
       </div>
@@ -151,28 +316,28 @@ function Chapter({ chapter }) {
 
 const servicePillars = [
   {
-    number: '01',
-    title: 'Performance & events',
-    detail: 'Make the room feel intentional, from a restaurant set to a private event or a live sound handoff.',
-    outputs: ['piano, band, or session performance', 'event sound setup', 'music shaped to the room'],
+    title: 'Hear the idea',
+    audience: 'For a song, voice memo, or feeling you cannot quite name.',
+    detail: 'First Listen turns one starting point into a custom piano response and a clear musical map you can react to.',
+    outputs: ['custom piano response', 'key + chord map', 'one focused revision'],
+    href: '#offer',
+    cta: 'Start with First Listen',
   },
   {
-    number: '02',
-    title: 'Lessons & ear training',
-    detail: 'Turn listening into a repeatable skill across piano, guitar, drums, bass, vocals, and improvisation.',
-    outputs: ['favorite-song lessons', 'ear-to-hand practice', 'goal-first weekly plan'],
+    title: 'Make it playable',
+    audience: 'For students, musicians, bands, and creators who need the blueprint.',
+    detail: 'We translate what you hear into a lesson, chart, notation, or MIDI part that your hands and collaborators can use.',
+    outputs: ['transcription or chord chart', 'MIDI when useful', 'goal-first practice plan'],
+    href: '#offer',
+    cta: 'See playable work',
   },
   {
-    number: '03',
-    title: 'Engineering & production',
-    detail: 'Move a rough idea toward a usable record with recording, mixing, sampling, and live-system thinking.',
-    outputs: ['recording or mix support', 'custom samples and backing parts', 'audio setup and signal flow'],
-  },
-  {
-    number: '04',
-    title: 'Transcription & music tools',
-    detail: 'Translate what you hear into the notation, chord map, MIDI, or small music tool your next step needs.',
-    outputs: ['sheet music or chord chart', 'MIDI or MusicXML when useful', 'custom music-code experiments'],
+    title: 'Make it heard',
+    audience: 'For venues, private events, artists, and rooms that need the moment handled.',
+    detail: 'We shape live piano, recording, production, and event sound around the people listening—not a generic package.',
+    outputs: ['piano or session performance', 'recording + mix support', 'event sound + signal flow'],
+    href: '#offer',
+    cta: 'Plan the room or studio',
   },
 ];
 
@@ -181,19 +346,21 @@ function ServiceMatrix() {
     <section className="service-matrix" id="services" aria-labelledby="services-title">
       <div className="service-intro">
         <p className="chapter-kicker">The useful map</p>
-        <h2 id="services-title">Four ways to make the sound move.</h2>
+        <h2 id="services-title">Choose the result you need.</h2>
         <div>
-          <p>AP Music &amp; Audio can stay broad without making the first decision fuzzy. Choose the outcome, then we shape the smallest useful session.</p>
-          <a className="scope-link" href="#offer">First Listen remains the smallest paid starting point →</a>
+          <p>Start with the change you want to make. We scope the smallest useful session around that result.</p>
+          <a className="scope-link" href="#offer">First Listen is the clearest paid starting point →</a>
         </div>
       </div>
       <div className="pillar-grid">
         {servicePillars.map((pillar) => (
-          <article className="pillar-card" key={pillar.number}>
-            <span className="pillar-number">{pillar.number}</span>
+          <article className="pillar-card" key={pillar.title}>
+            <p className="pillar-audience">{pillar.audience}</p>
             <h3>{pillar.title}</h3>
             <p>{pillar.detail}</p>
+            <p className="pillar-output-label">You leave with</p>
             <ul>{pillar.outputs.map((output) => <li key={output}>{output}</li>)}</ul>
+            <a className="scope-link pillar-link" href={pillar.href}>{pillar.cta} <span aria-hidden="true">→</span></a>
           </article>
         ))}
       </div>
@@ -333,21 +500,21 @@ function PortfolioProof() {
 const offers = [
   {
     name: 'First Listen',
-    label: 'Start here',
+    label: 'For a song or rough idea',
     price: '$95',
     detail: 'A short custom piano response built from one song, voice memo, or feeling you cannot quite name.',
     outputs: ['piano performance', 'key + chord map', 'one focused revision'],
   },
   {
     name: 'Transcription Map',
-    label: 'When you need the blueprint',
+    label: 'For something you need to play',
     price: 'from $60',
     detail: 'Turn a recording into the format your hands, band, DAW, or student can actually use.',
     outputs: ['chord chart or notation', 'MIDI when useful', 'delivery scope confirmed first'],
   },
   {
     name: 'One-to-One Session',
-    label: 'When you need the person in the room',
+    label: 'For a room, record, or lesson',
     price: 'custom',
     detail: 'Lessons, live piano, event audio, recording support, or an improvised performance shaped around the room.',
     outputs: ['right-sized scope', 'Louisville + remote', 'goal-first brief'],
@@ -503,7 +670,7 @@ function Booking({ selectedOffer }) {
   );
 }
 
-export function App() {
+export function LegacyStudio() {
   const [selectedOffer, setSelectedOffer] = useState('');
   return (
     <main>
@@ -521,4 +688,8 @@ export function App() {
       <footer><span>AP Music &amp; Audio</span><a href="/card.html" target="_blank" rel="noreferrer">Printable business card</a><span>Piano / sound / code</span><span>© {new Date().getFullYear()} Payton + Alex</span></footer>
     </main>
   );
+}
+
+export function App() {
+  return <StudioExperience />;
 }

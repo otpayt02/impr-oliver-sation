@@ -104,6 +104,20 @@
 - Decision: show Morning Prelude, Ten-Second Challenge, and Studio Walkthrough as draft YouTube lanes tied to the First Listen offer.
 - Alternatives: create a channel or schedule lives immediately; keep the content plan hidden in a document.
 - Why: the audience funnel becomes legible now while accounts, publishing, copyrighted references, and live scheduling stay approval-gated.
+
+## D-017 — Buyer-outcome service map
+
+- Decision: replace the four capability-led service pillars with three buyer-led outcomes: Hear the idea, Make it playable, and Make it heard.
+- Alternatives: keep the four internal capability categories; list every service in one long menu; lead with the animation alone.
+- Why: a new visitor can identify their starting situation and the concrete thing they will leave with before reading the longer story.
+- Approval note: the outcome copy describes the existing AP Music & Audio scope; pricing, rights, contact delivery, and public claims remain owner-gated.
+
+## D-018 — Hero starting-point picker
+
+- Decision: keep the binary-to-notation animation as atmosphere, but place an interactive three-way starting-point picker in the first viewport for an idea, a playable blueprint, or a room/studio need.
+- Alternatives: add more ambient animation; keep the former abstract headline and single generic CTA.
+- Why: the motion now supports a concrete buyer decision instead of asking the animation to explain the offer by itself.
+- Approval note: the picker only changes local copy and navigates to existing sections; it does not create a booking, send a message, or connect a provider.
 - Approval note: every lane is a draft format, not evidence of a live channel or published performance.
 
 ## D-017 — Single owner approval packet

@@ -1,0 +1,78 @@
+async (page) => {
+  const checks = [];
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  const check = (name, passed) => { if (!passed) throw new Error(name); checks.push(name); };
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('http://127.0.0.1:4173/');
+  await page.getByRole('heading', { level: 1, name: 'Bring your idea to life.' }).waitFor();
+  await page.screenshot({ path: 'output/playwright/cream-desktop.png' });
+  const nav = page.getByRole('navigation', { name: 'Story chapters' });
+  for (const [stage, heading] of [['04Learn', 'Learn the language. Trust your ear.'], ['06Begin', 'Find your people. Start something.'], ['01Input', 'Bring your idea to life.']]) {
+    await nav.getByRole('button', { name: new RegExp(stage.slice(0, 2) + '\\s*' + stage.slice(2)) }).click();
+    await page.getByRole('heading', { level: 1, name: heading }).waitFor();
+    check(`Story ${stage} visible within viewport`, await page.locator('.studio-viewport').evaluate(el => { const r = el.getBoundingClientRect(); return Math.abs(r.top) < 2 && r.bottom <= innerHeight + 2; }));
+    await page.screenshot({ path: `output/playwright/cream-story-${stage}.png` });
+  }
+  await nav.getByRole('button', { name: /04\s*Learn/ }).click();
+  await page.getByRole('heading', { level: 1, name: 'Learn the language. Trust your ear.' }).waitFor();
+  await page.reload();
+  await page.getByRole('heading', { level: 1, name: 'Learn the language. Trust your ear.' }).waitFor();
+  check('Refresh restores the current scroll chapter', true);
+  await page.getByRole('button', { name: 'AS Alexander Say Explore with Alexander' }).first().click();
+  check('Collaborator updates inquiry', await page.locator('.inquiry-person').innerText().then(text => text.includes('Start with Alexander Say')));
+  await page.locator('#services').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'output/playwright/cream-services.png' });
+  await page.locator('#music-refine summary').click();
+  check('Service example expands', await page.locator('#music-refine details').getAttribute('open') !== null);
+  await page.locator('#music-refine').getByRole('button', { name: 'Explore with Alexander ↗' }).click();
+  await page.getByRole('textbox', { name: 'What would you love to make possible?' }).waitFor();
+  check('Service choice prefills inquiry', (await page.getByRole('textbox', { name: 'What would you love to make possible?' }).inputValue()).includes('Hear it. Understand it. Play it.'));
+  await page.getByRole('textbox', { name: 'Your name', exact: true }).fill('Studio QA');
+  await page.getByRole('textbox', { name: 'Email', exact: true }).fill('studio-qa@example.test');
+  await page.getByRole('button', { name: 'Shape my request ↗' }).click();
+  await page.getByText('AUTOMATED BRIEF HELPER · LOCAL REPLY').waitFor();
+  check('Inquiry prepares a clearly local automated reply', true);
+  await page.getByRole('textbox', { name: 'Your name', exact: true }).fill('Edited QA');
+  check('Editing invalidates prepared brief', await page.locator('.concierge-reply').count() === 0);
+  await page.locator('#checkout').scrollIntoViewIfNeeded();
+  for (const [button, expected] of [['Rehearse success ↗', '$0 charged'], ['Try a decline', 'Practice decline'], ['Try cancellation', 'Payment cancelled']]) {
+    await page.getByRole('button', { name: button, exact: true }).click();
+    check(`Payment ${button}`, (await page.locator('.practice-status').innerText()).includes(expected));
+  }
+  await page.getByRole('combobox', { name: 'Choose a practice service' }).selectOption('transcription');
+  check('Practice service updates total', (await page.locator('.practice-total').innerText()).includes('$60'));
+  await page.screenshot({ path: 'output/playwright/cream-checkout.png' });
+  await page.getByRole('button', { name: 'Load Google Pay test checkout ↗' }).click();
+  await page.waitForFunction(() => document.querySelector('.wallet-caption') || /Google Pay is unavailable/.test(document.querySelector('.wallet-area')?.textContent || ''), null, { timeout: 25000 });
+  const wallet = await page.locator('.wallet-area').innerText();
+  check('Google Pay has a ready button or actionable unavailable state', true);
+  await page.screenshot({ path: 'output/playwright/cream-wallet.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('http://127.0.0.1:4173/');
+  await page.getByRole('heading', { level: 1, name: 'Bring your idea to life.' }).waitFor();
+  check('Mobile page has no horizontal overflow', await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: 'output/playwright/cream-mobile.png' });
+  await nav.getByRole('button', { name: /06\s*Begin/ }).click();
+  await page.getByRole('heading', { level: 1, name: 'Find your people. Start something.' }).waitFor();
+  check('Mobile final story fits', await page.locator('.studio-viewport').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight + 2));
+  await page.screenshot({ path: 'output/playwright/cream-mobile-end.png' });
+  await page.locator('#checkout').scrollIntoViewIfNeeded();
+  check('Mobile checkout has no overflow', await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: 'output/playwright/cream-mobile-checkout.png' });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('http://127.0.0.1:4173/');
+  await page.locator('.studio-runway.is-static').waitFor();
+  await nav.getByRole('button', { name: /04\s*Learn/ }).click();
+  await page.getByRole('heading', { level: 1, name: 'Learn the language. Trust your ear.' }).waitFor();
+  check('Reduced-motion chapters remain manually accessible', true);
+  await page.screenshot({ path: 'output/playwright/cream-reduced-motion.png' });
+  await page.setViewportSize({ width: 320, height: 667 });
+  check('Small screen has no horizontal overflow', await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: 'output/playwright/cream-small.png' });
+  check('No application runtime errors', errors.length === 0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('http://127.0.0.1:4173/');
+  return { checks, runtimeErrors: errors, wallet };
+}

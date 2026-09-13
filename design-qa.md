@@ -11,8 +11,8 @@
 - Current card proof: browser inspection found two card faces and a valid `@page` print rule.
 - Local proof portfolio capture: `site/output/portfolio-proof.png`, `site/output/portfolio-proof-section.png`.
 - Destination handoff proof: fresh browser inspection at `#paths` found two approval-gated cards, no default outbound links, and no horizontal overflow.
-- Service map proof: browser DOM checks now confirm all four `#services` pillars at desktop and 390×844 mobile widths with no horizontal overflow.
-- SEO proof: source and packaging checks include a domain-neutral JSON-LD `OfferCatalog` for the four service pillars; no public domain is asserted.
+- Service map proof: browser DOM checks now confirm the three buyer-outcome `#services` paths at desktop and 390×844 mobile widths with no horizontal overflow.
+- SEO proof: source and packaging checks include a domain-neutral JSON-LD `OfferCatalog` for the three buyer outcomes; no public domain is asserted.
 - Launch gate proof: browser DOM checks confirm all four `#launch-gate` checkpoints at desktop and 390×844 mobile widths with no horizontal overflow.
 - YouTube slate proof: browser DOM checks confirm the draft `#channel` lanes at desktop and 390×844 mobile widths; account creation, live scheduling, and publishing remain absent.
 - Lead Map proof: browser DOM checks confirm all three `#lead-map` routes at desktop and 390×844 mobile widths; no overflow or console warnings were observed, and the routes remain internal draft navigation.

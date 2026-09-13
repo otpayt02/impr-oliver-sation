@@ -1,0 +1,66 @@
+import { useState } from 'react';
+import { ServiceColumns, Approach, Inquiry, useReducedMotion } from './StudioExperience.jsx';
+import { PracticeCheckout } from './PracticeCheckout.jsx';
+import './duet.css';
+
+// These are illustrations of the work, not recordings or client deliverables.
+function SoundDrawing({ audio = false }) {
+  return <svg className="duet-drawing" viewBox="0 0 520 190" fill="none" aria-hidden="true">
+    {audio ? <>
+      {[38, 76, 114, 152].map(y => <path key={y} d={`M20 ${y}H500`} className="drawing-guide" />)}
+      <path d="M20 95H83C100 95 94 35 112 35S127 155 145 155S157 55 176 55S191 135 211 135S225 75 246 75S269 111 293 111S313 87 340 87S362 95 392 95H500" className="drawing-line" />
+      <circle cx="83" cy="95" r="5" fill="currentColor" /><circle cx="392" cy="95" r="5" fill="currentColor" />
+      <path d="M83 178V167M246 178V167M392 178V167" stroke="currentColor" />
+    </> : <>
+      {[49, 70, 91, 112, 133].map(y => <path key={y} d={`M20 ${y}H500`} className="drawing-guide" />)}
+      <path d="M50 136C110 155 153 22 218 35S312 156 377 122S451 65 495 50" className="drawing-line" />
+      {[[94,112],[175,70],[267,91],[368,112],[452,49]].map(([x,y]) => <g key={x}><ellipse cx={x} cy={y} rx="10" ry="7" transform={`rotate(-22 ${x} ${y})`} fill="currentColor" /><path d={`M${x+9} ${y}v-47`} stroke="currentColor" strokeWidth="2" /></g>)}
+    </>}
+  </svg>;
+}
+
+export function DuetLanding() {
+  const [person, setPerson] = useState('oliver');
+  const [selected, setSelected] = useState('');
+  const reduced = useReducedMotion();
+  const selectService = title => {
+    setSelected(title);
+    document.getElementById('book')?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' });
+  };
+  return <main className="ap-studio ap-duet">
+    <a className="studio-skip" href="#services">Skip to services</a>
+    <header className="duet-header" id="top">
+      <a className="duet-brand" href="#top" aria-label="AP Music and Audio home">ap<span>.</span><small>MUSIC<br />& AUDIO</small></a>
+      <nav aria-label="Main navigation"><a href="#music-make">Music</a><a href="#audio-make">Audio</a><a href="#offer">First Listen</a></nav>
+      <a className="duet-contact" href="#book">Start a conversation <span aria-hidden="true">↗</span></a>
+    </header>
+    <section className="duet-intro" aria-labelledby="duet-title">
+      <p className="duet-byline">Oliver Payton & Alexander Say</p>
+      <h1 id="duet-title">Two sides of{' '}<br className="duet-mobile-break" /><em>the same sound.</em></h1>
+      <p>From the first idea to something you can hear.</p>
+    </section>
+    <section className="duet-offers" aria-label="Music and Audio services">
+      <article className="duet-offer duet-music" aria-labelledby="music-offer-title">
+        <div className="duet-offer-top"><span>THE NOTES. THE HANDS. THE FEELING.</span><span aria-hidden="true">♮</span></div>
+        <h2 id="music-offer-title">Music<span>.</span></h2>
+        <p className="duet-offer-lede">Play it. Understand it.<br />Make the performance yours.</p>
+        <SoundDrawing />
+        <div className="duet-offer-bottom"><p>Piano parts & arrangements<br />Lessons & transcription<br />Performance & accompaniment</p><a href="#music-make">Explore Music <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <article className="duet-offer duet-audio" aria-labelledby="audio-offer-title">
+        <div className="duet-offer-top"><span>THE SIGNAL. THE SPACE. THE DETAIL.</span><span aria-hidden="true">↔</span></div>
+        <h2 id="audio-offer-title">Audio<span>.</span></h2>
+        <p className="duet-offer-lede">Capture it. Shape it.<br />Make it heard.</p>
+        <SoundDrawing audio />
+        <div className="duet-offer-bottom"><p>Recording & production<br />Mix feedback & signal flow<br />Live sound & room setup</p><a href="#audio-make">Explore Audio <span aria-hidden="true">↗</span></a></div>
+      </article>
+    </section>
+    <div className="duet-bridge"><p>Independent minds. A shared love of sound.</p><a href="#offer">One clear place to begin: First Listen <span aria-hidden="true">↗</span></a></div>
+    <ServiceColumns person={person} onPerson={setPerson} onSelect={selectService} />
+    <Approach />
+    <section className="studio-first-listen" id="offer"><p className="studio-eyebrow">One clear place to begin</p><h2>First Listen<span>.</span></h2><div><p>One reference. A piano response.<br />A key and chord map. A focused revision.</p><a className="studio-button" href="#checkout">Try the $95 practice order ↗</a><button className="text-button" onClick={() => selectService('First Listen')}>Discuss First Listen</button><small>Draft offer · confirm scope and timing before a real booking.</small></div></section>
+    <Inquiry person={person} selected={selected} />
+    <PracticeCheckout />
+    <footer className="studio-footer"><a href="#top" className="footer-monogram" aria-label="AP home">ap.</a><p>Oliver Payton & Alexander Say<br /><span>Music / audio / the space between.</span></p><a href="#checkout">Practice checkout ↗</a><a href="#top">Back to the beginning ↑</a></footer>
+  </main>;
+}

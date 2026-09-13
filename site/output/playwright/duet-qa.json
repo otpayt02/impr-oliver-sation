@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-11T01:30:45.168Z",
+  "checks": [
+    "Exactly one main heading",
+    "All six service descriptions retained",
+    "Equal desktop offers",
+    "Two approved cool shades",
+    "No broken fragment links",
+    "Keyboard skip link and visible focus",
+    "Skip reaches services",
+    "Music offer reaches matching service",
+    "Audio offer reaches matching service",
+    "Audio inquiry preserves chosen collaborator and service",
+    "Brief prepared locally",
+    "Editing invalidates old brief",
+    "Rehearse success",
+    "Try a decline",
+    "Try cancellation",
+    "No payment input fields",
+    "No horizontal overflow at 390px",
+    "Equal stacked offers at 390px",
+    "Both offer actions meet touch target at 390px",
+    "No horizontal overflow at 320px",
+    "Equal stacked offers at 320px",
+    "Both offer actions meet touch target at 320px",
+    "Reduced motion keeps full content without animations",
+    "Both CTAs visible on shorter desktop viewport",
+    "No external requests from local customer rehearsal",
+    "No application errors"
+  ],
+  "errors": [],
+  "external": []
+}
