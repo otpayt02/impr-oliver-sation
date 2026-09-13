@@ -1,0 +1,41 @@
+# deploy-cloudflare-site.yml — deploys the site/ Vite+Workers build to Cloudflare on push.
+# PREREQ (one-time, Oliver): repo Settings → Secrets and variables → Actions, add:
+#   CLOUDFLARE_API_TOKEN  (dash.cloudflare.com → My Profile → API Tokens → "Edit Cloudflare Workers" template)
+#   CLOUDFLARE_ACCOUNT_ID (Workers overview page, right sidebar)
+# Free tier covers this; see docs/upgrades-later.md — do not pay for anything here.
+name: deploy-cloudflare-site
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/deploy-cloudflare-site.yml"]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: install deps
+        working-directory: site
+        run: npm ci
+      - name: build frontend if build script exists
+        working-directory: site
+        run: |
+          if node -p "Boolean(require('./package.json').scripts && require('./package.json').scripts.build)" | grep -q true; then
+            npm run build
+          else
+            echo "no build script — wrangler handles worker bundling"
+          fi
+      - name: deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: site
+          command: deploy
