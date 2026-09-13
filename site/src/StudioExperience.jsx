@@ -131,16 +131,20 @@ function LegacyStoryHero({ person, onPerson, reduced }) {
   </section>;
 }
 
-export function ServiceColumns({ person, onPerson, onSelect }) {
-  return <section className="studio-services" id="services"><div className="section-heading"><div><p className="studio-eyebrow">Two sides of the same sound</p><h2>What are you<br /><em>here to make?</em></h2></div><div><p>Play it, understand it, share it. Or capture it, shape it, and make it heard. Follow the color to your kind of work.</p><PersonPicker person={person} onChange={onPerson} /><p className="person-context">{people[person].note} Both can collaborate; your selection is a preference.</p></div></div>
-    <div className="service-duet">{['Music', 'Audio'].map(domain => <div className={`service-domain domain-${domain.toLowerCase()}`} key={domain}>
-      <div className="domain-title"><h3>{domain}<span>.</span></h3><p>{domain === 'Music' ? 'The notes. The hands. The feeling.' : 'The signal. The space. The detail.'}</p></div>
-      {services.filter(item => item.domain === domain).map(item => <article key={item.id} id={item.id} data-tilt-card className={`studio-service ${item.id} ${item.lead === person || item.lead === 'shared' ? 'is-in-focus' : ''}`}>
-        <div className="service-label"><span><i />{item.layer}</span><span>{item.mode}</span></div>
-        <h4>{item.title}</h4><p className="service-subtitle">{item.subtitle}</p><p>{item.detail}</p>
-        <p className="service-collaborator">{item.lead === 'shared' ? 'Oliver + Alexander · shared work' : `Suggested lead: ${people[item.lead].name}`}<small>We confirm the fit together.</small></p>
-        <details><summary>Inside the approach <span aria-hidden="true">+</span></summary><div className="service-example"><span aria-hidden="true">{item.symbol}</span><div><strong>{item.example}</strong><p>{item.sample}</p><small>Illustrative process · not a client case study</small></div></div></details>
-        <div className="service-bottom"><span>{item.result}</span><button onClick={() => onSelect(item.title)}>Explore with {people[person].short} ↗</button></div>
+export function ServiceColumns({ person, onPerson, onSelect, domain: controlledDomain, onDomain }) {
+  const [localDomain, setLocalDomain] = useState('Music');
+  const domain = controlledDomain ?? localDomain;
+  const chooseDomain = nextDomain => { if (onDomain) onDomain(nextDomain); else setLocalDomain(nextDomain); };
+  return <section className="studio-services" id="services" data-domain={domain.toLowerCase()} data-person={person}><div className="section-heading"><div><p className="studio-eyebrow">Two sides of the same sound</p><h2>What are you<br /><em>here to make?</em></h2></div><div><p>Play it, understand it, share it. Or capture it, shape it, and make it heard. Choose a person, then bring your work forward.</p><PersonPicker person={person} onChange={onPerson} /><p className="person-context">{people[person].note} Both can collaborate; your selection is a preference.</p></div></div>
+    <div className="service-tabs" role="group" aria-label="Choose a service focus">{['Music', 'Audio'].map(item => <button key={item} type="button" aria-pressed={domain === item} onClick={() => chooseDomain(item)}><span>{item}</span><small>{item === 'Music' ? 'Play and learn' : 'Capture and shape'}</small></button>)}</div>
+    <div className="service-duet">{['Music', 'Audio'].map(item => <div className={`service-domain domain-${item.toLowerCase()} ${domain === item ? 'is-foreground' : 'is-background'}`} key={item}>
+      <div className="domain-title"><h3>{item}<span>.</span></h3><p>{item === 'Music' ? 'The notes. The hands. The feeling.' : 'The signal. The space. The detail.'}</p></div>
+      {services.filter(service => service.domain === item).map(service => <article key={service.id} id={service.id} data-tilt-card className={`studio-service ${service.id} ${service.lead === person || service.lead === 'shared' ? 'is-in-focus' : ''}`}>
+        <div className="service-label"><span><i />{service.layer}</span><span>{service.mode}</span></div>
+        <h4>{service.title}</h4><p className="service-subtitle">{service.subtitle}</p><p>{service.detail}</p>
+        <p className="service-collaborator">{service.lead === 'shared' ? 'Oliver + Alexander · shared work' : `Suggested lead: ${people[service.lead].name}`}<small>We confirm the fit together.</small></p>
+        <details><summary>Inside the approach <span aria-hidden="true">+</span></summary><div className="service-example"><span aria-hidden="true">{service.symbol}</span><div><strong>{service.example}</strong><p>{service.sample}</p><small>Illustrative process · not a client case study</small></div></div></details>
+        <div className="service-bottom"><span>{service.result}</span><button onClick={() => onSelect(service.title)}>Explore with {people[person].short} ↗</button></div>
       </article>)}
     </div>)}</div>
   </section>;
@@ -167,11 +171,12 @@ export function Inquiry({ person, selected }) {
 
 export function StudioExperience() {
   const [person, setPerson] = useState('oliver');
+  const [domain, setDomain] = useState('Music');
   const [selected, setSelected] = useState('');
   const reduced = useReducedMotion();
   useAtmosphericDepth(reduced);
   usePointerDepth(reduced);
   useCinematicReveal();
   const selectService = title => { setSelected(title); document.getElementById('book')?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' }); };
-  return <main className="ap-studio"><a className="studio-skip" href="#services">Skip to services</a><StoryHero person={person} onPerson={setPerson} reduced={reduced} /><ServiceColumns person={person} onPerson={setPerson} onSelect={selectService} /><Approach /><section data-parallax className="studio-first-listen" id="offer"><p className="studio-eyebrow">One clear place to begin</p><h2>First Listen<span>.</span></h2><div><p>One reference. A piano response.<br />A key and chord map. A focused revision.</p><a className="studio-button" href="#checkout">Try the $95 practice order ↗</a><button className="text-button" onClick={() => selectService('First Listen')}>Discuss First Listen</button><small>Draft offer · confirm scope and timing before a real booking.</small></div></section><Inquiry person={person} selected={selected} /><PracticeCheckout /><footer className="studio-footer"><a href="#top" className="footer-monogram">ap.</a><p>Oliver Payton & Alexander Say<br /><span>Music / audio / the space between.</span></p><a href="#checkout">Practice checkout ↗</a><a href="#top">Back to the beginning ↑</a></footer></main>;
+  return <main className="ap-studio"><a className="studio-skip" href="#services">Skip to services</a><StoryHero person={person} onPerson={setPerson} reduced={reduced} /><ServiceColumns person={person} onPerson={setPerson} onSelect={selectService} domain={domain} onDomain={setDomain} /><Approach /><section data-parallax className="studio-first-listen" id="offer"><p className="studio-eyebrow">One clear place to begin</p><h2>First Listen<span>.</span></h2><div><p>One reference. A piano response.<br />A key and chord map. A focused revision.</p><a className="studio-button" href="#checkout">Try the $95 practice order ↗</a><button className="text-button" onClick={() => selectService('First Listen')}>Discuss First Listen</button><small>Draft offer · confirm scope and timing before a real booking.</small></div></section><Inquiry person={person} selected={selected} /><PracticeCheckout /><footer className="studio-footer"><a href="#top" className="footer-monogram">ap.</a><p>Oliver Payton & Alexander Say<br /><span>Music / audio / the space between.</span></p><a href="#checkout">Practice checkout ↗</a><a href="#top">Back to the beginning ↑</a></footer></main>;
 }

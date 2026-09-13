@@ -11,6 +11,15 @@ Before making substantial visual changes, use the Product Design plugin's `get-c
 - Return three circular, text-led service wayfinders as useful links (play, learn, make), rather than decorative badges. Pointer depth belongs on service cards only; do not replace the native cursor or add a full-page cursor trail.
 - User named piano, bass, drums, audio event setup, teaching, and curated study/workout playlists. Keep those items truthful: the playlists are an in-development practice aid unless approved content is supplied.
 
+### September 13 — service foreground cycling
+
+- The service surface now needs smooth division transitions and user-controlled foreground cycling: Oliver/Alex collaborator controls and Music/Audio service tabs must clearly bring the selected route forward while keeping the other route readable in the background.
+
+### September 13 — saturated glyph formation hero
+
+- The sticky hero must use bounded scroll-scrubbed notation: scattered music notes sequentially settle into oversized letter masks, then change from mixed glyphs into notation. Keep the formation deterministic, reversible, reduced-motion readable, and visibly saturated in distinct green, blue, and purple hues. Music and Audio receive separate saturated palettes.
+- Hero letter masks use the existing service-subtitle sans voice at display scale and occupy the left foreground rather than introducing a new display typeface.
+
 When implementing from a selected generated mock, treat that image as the source of truth for layout, component anatomy, density, spacing, color, typography, visible content, and hierarchy.
 
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.

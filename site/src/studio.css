@@ -93,7 +93,18 @@ body { background: #f3f1e9; }
 .section-heading > div:last-child > p:first-child { max-width: 410px; color: #56645b; font-size: 15px; margin-bottom: 22px; }
 .section-heading .person-picker button { padding-left: 0; padding-right: 9px; }
 .ap-studio .person-context { color: var(--studio-muted); font-size: 10px; margin-top: 12px; max-width: 390px; }
+.service-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: -28px 0 42px; }
+.service-tabs button { display: flex; justify-content: space-between; align-items: baseline; min-height: 68px; padding: 15px 18px; background: transparent; border: 1px solid var(--studio-line); border-radius: 4px; text-align: left; color: var(--studio-muted); transition: color 320ms cubic-bezier(.16,1,.3,1), background 320ms cubic-bezier(.16,1,.3,1), transform 320ms cubic-bezier(.16,1,.3,1), border-color 320ms cubic-bezier(.16,1,.3,1); }
+.service-tabs button span { font: 400 28px/1 Georgia, serif; letter-spacing: -.04em; }
+.service-tabs button small { font: 9px Consolas, monospace; }
+.service-tabs button[aria-pressed='true'] { color: var(--studio-ink); background: #e5eadf; border-color: #aab6a5; transform: translate3d(0, -4px, 0); }
+.studio-services[data-domain='audio'] .service-tabs button[aria-pressed='true'] { background: #e5e6f1; border-color: #aeb3cc; }
 .service-duet { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6vw; }
+.service-domain { transform-origin: center top; transition: opacity 440ms cubic-bezier(.16,1,.3,1), transform 440ms cubic-bezier(.16,1,.3,1), filter 440ms cubic-bezier(.16,1,.3,1); }
+.service-domain.is-foreground { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+.service-domain.is-background { opacity: .52; transform: translate3d(0, 28px, 0) scale(.975); filter: saturate(.72); }
+.studio-services[data-person='alex'] .service-domain.is-foreground .studio-service.is-in-focus { box-shadow: inset 3px 0 0 #5c4e83; padding-left: 16px; }
+.studio-services[data-person='oliver'] .service-domain.is-foreground .studio-service.is-in-focus { box-shadow: inset 3px 0 0 #25765b; padding-left: 16px; }
 .domain-title { display: flex; align-items: baseline; gap: 22px; padding-bottom: 25px; }
 .domain-title h3 { font: 400 48px/1 Georgia, serif; margin: 0; letter-spacing: -.05em; }
 .domain-title p { color: var(--studio-muted); font-size: 11px; }
@@ -245,7 +256,8 @@ body { background: #f3f1e9; }
   .section-heading { grid-template-columns: 1fr; gap: 26px; margin-bottom: 40px; }
   .section-heading .person-picker { gap: 10px; }
   .ap-studio h2 { font-size: 44px; }
-  .service-duet { gap: 38px; grid-template-columns: 1fr; }
+  .service-tabs { margin: -10px 0 32px; gap: 8px; }.service-tabs button { min-height: 60px; padding: 12px; }.service-tabs button span { font-size: 24px; }.service-tabs button small { font-size: 8px; }
+  .service-duet { gap: 38px; grid-template-columns: 1fr; }.service-domain.is-background { opacity: .72; transform: translate3d(0, 14px, 0) scale(.99); }
   .domain-title { display: flex; gap: 20px; align-items: baseline; }
   .domain-title h3 { font-size: 44px; }
   .domain-title p { font-size: 9px; }
