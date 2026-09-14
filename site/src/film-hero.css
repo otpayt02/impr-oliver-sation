@@ -18,6 +18,33 @@
   position: relative;
   height: auto;
   min-height: 100vh;
+  display: block;
+  overflow: visible;
+}
+
+/* Reduced/manual motion is a readable six-scene document, not six layers
+   competing in one viewport. Each scene keeps its own full-height canvas. */
+.film-runway.is-static .scene {
+  position: relative;
+  inset: auto;
+  min-height: 100svh;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.film-runway.is-static .film-journey,
+.film-runway.is-static .film-legend,
+.film-runway.is-static .film-signal-field,
+.film-runway.is-static .scroll-invitation { display: none; }
+
+.film-runway.is-static .chapter-dots {
+  position: sticky;
+  top: 1rem;
+  z-index: calc(var(--z-film-ui) + 1);
+  width: max-content;
+  margin: 1rem 0 0 auto;
+  padding-right: var(--gutter);
 }
 
 .film-stage {
@@ -124,10 +151,23 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 6px;
-  cursor: pointer;
-  padding: 4px 0;
+  padding: 0;
   transition: opacity var(--transition-base) var(--ease-out);
 }
+
+.chapter-dots button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 4px 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.chapter-dots button:focus-visible { outline: 2px solid var(--violet); outline-offset: 5px; }
 
 .chapter-dots li:hover {
   opacity: 1;
@@ -147,7 +187,7 @@
 }
 
 .chapter-dots li:hover .dot,
-.chapter-dots li:focus-visible .dot {
+.chapter-dots button:focus-visible .dot {
   border-color: var(--gold);
   box-shadow: 0 0 12px var(--gold);
 }
@@ -177,6 +217,17 @@
   transform: translateX(0);
   color: var(--gold);
 }
+
+/* Scene one carries forward the active saturated glyph landing instead of
+   introducing unsupported portraits or a competing display typeface. */
+.film-glyph-title { max-width: min(800px, 75vw); margin: 0; font: 600 clamp(3rem, 8vw, 7.5rem)/.84 "Segoe UI", sans-serif; letter-spacing: -.075em; }
+.film-glyph-title .glyph-word--action { width: 5.8ch; color: #61e39a; }
+.film-glyph-title .glyph-word--object { width: 10.5ch; color: #5faeff; }
+.film-glyph-title .glyph-word--ending { width: 12em; color: #bc84ff; }
+.film-glyph-title[data-domain="audio"] .glyph-word--action { color: #00d8c4; }
+.film-glyph-title[data-domain="audio"] .glyph-word--object { color: #5b8cff; }
+.film-glyph-title[data-domain="audio"] .glyph-word--ending { color: #c348ff; }
+.film-glyph-your { color: var(--text-primary); }
 
 /* ========================================
    SCENES

@@ -11,7 +11,7 @@ const seeded = value => { const x = Math.sin(value * 12.9898) * 43758.5453; retu
 
 // One deterministic notation plan is derived from each word mask. Scroll only
 // changes arrival, so reverse-scroll and refresh-at-position reconstruct cleanly.
-function GlyphWord({ children, tone, compact = false, progress = 1, start = 0, end = 1 }) {
+export function GlyphWord({ children, tone, compact = false, progress = 1, start = 0, end = 1 }) {
   const canvas = useRef(null);
   useEffect(() => {
     const element = canvas.current;

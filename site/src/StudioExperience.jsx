@@ -135,18 +135,19 @@ export function ServiceColumns({ person, onPerson, onSelect, domain: controlledD
   const [localDomain, setLocalDomain] = useState('Music');
   const domain = controlledDomain ?? localDomain;
   const chooseDomain = nextDomain => { if (onDomain) onDomain(nextDomain); else setLocalDomain(nextDomain); };
+  const selectedServices = services.filter(service => service.domain === domain);
   return <section className="studio-services" id="services" data-domain={domain.toLowerCase()} data-person={person}><div className="section-heading"><div><p className="studio-eyebrow">Two sides of the same sound</p><h2>What are you<br /><em>here to make?</em></h2></div><div><p>Play it, understand it, share it. Or capture it, shape it, and make it heard. Choose a person, then bring your work forward.</p><PersonPicker person={person} onChange={onPerson} /><p className="person-context">{people[person].note} Both can collaborate; your selection is a preference.</p></div></div>
     <div className="service-tabs" role="group" aria-label="Choose a service focus">{['Music', 'Audio'].map(item => <button key={item} type="button" aria-pressed={domain === item} onClick={() => chooseDomain(item)}><span>{item}</span><small>{item === 'Music' ? 'Play and learn' : 'Capture and shape'}</small></button>)}</div>
-    <div className="service-duet">{['Music', 'Audio'].map(item => <div className={`service-domain domain-${item.toLowerCase()} ${domain === item ? 'is-foreground' : 'is-background'}`} key={item}>
-      <div className="domain-title"><h3>{item}<span>.</span></h3><p>{item === 'Music' ? 'The notes. The hands. The feeling.' : 'The signal. The space. The detail.'}</p></div>
-      {services.filter(service => service.domain === item).map(service => <article key={service.id} id={service.id} data-tilt-card className={`studio-service ${service.id} ${service.lead === person || service.lead === 'shared' ? 'is-in-focus' : ''}`}>
+    <div className="service-duet" aria-live="polite"><div className={`service-domain domain-${domain.toLowerCase()} is-foreground service-domain--swap`} key={domain}>
+      <div className="domain-title"><h3>{domain}<span>.</span></h3><p>{domain === 'Music' ? 'The notes. The hands. The feeling.' : 'The signal. The space. The detail.'}</p></div>
+      <div className="service-card-deck">{selectedServices.map((service, index) => <article key={service.id} id={service.id} data-tilt-card style={{ '--card-index': index }} className={`studio-service ${service.id} ${service.lead === person || service.lead === 'shared' ? 'is-in-focus' : ''}`}>
         <div className="service-label"><span><i />{service.layer}</span><span>{service.mode}</span></div>
         <h4>{service.title}</h4><p className="service-subtitle">{service.subtitle}</p><p>{service.detail}</p>
         <p className="service-collaborator">{service.lead === 'shared' ? 'Oliver + Alexander · shared work' : `Suggested lead: ${people[service.lead].name}`}<small>We confirm the fit together.</small></p>
         <details><summary>Inside the approach <span aria-hidden="true">+</span></summary><div className="service-example"><span aria-hidden="true">{service.symbol}</span><div><strong>{service.example}</strong><p>{service.sample}</p><small>Illustrative process · not a client case study</small></div></div></details>
         <div className="service-bottom"><span>{service.result}</span><button onClick={() => onSelect(service.title)}>Explore with {people[person].short} ↗</button></div>
-      </article>)}
-    </div>)}</div>
+      </article>)}</div>
+    </div></div>
   </section>;
 }
 

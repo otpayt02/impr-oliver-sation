@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { SignalField } from './SignalField.jsx';
 import { people, services, story } from './studio-catalog.js';
+import { NoteGlyphField } from './NoteGlyphField.jsx';
+import { chooseHeroPhrase, heroPhrases } from './hero-phrases.js';
 import { PracticeCheckout } from './PracticeCheckout.jsx';
 import './tokens.css';
 import './studio.css';
@@ -99,9 +101,25 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
   const [progress, setProgress] = useState(0);
   const [motionOff, setMotionOff] = useState(false);
   const [manualStage, setManualStage] = useState(0);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const phraseHistory = useRef([0]);
   const staticMode = reduced || motionOff;
   const active = staticMode ? manualStage : Math.min(5, Math.floor(progress * 6));
   const scene = story[active];
+  const [subject, predicate, purpose, domain] = heroPhrases[phraseIndex];
+
+  // The original glyph landing remains the film's opening shot. Its phrase
+  // rotation is paused by either user motion preference or reduced motion.
+  useEffect(() => {
+    if (staticMode || active !== 0) return undefined;
+    const rotate = () => {
+      const next = chooseHeroPhrase(phraseHistory.current);
+      phraseHistory.current = [...phraseHistory.current.slice(-8), next];
+      setPhraseIndex(next);
+    };
+    const timer = window.setInterval(() => { if (!document.hidden) rotate(); }, 3200);
+    return () => window.clearInterval(timer);
+  }, [active, staticMode]);
   
   const updateProgress = useCallback(() => {
     const el = runway.current;
@@ -157,7 +175,11 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
   
   const jump = (index) => {
     setManualStage(index);
-    if (!staticMode && runway.current) {
+    if (staticMode && runway.current) {
+      runway.current.querySelector(`[data-index="${index}"]`)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      return;
+    }
+    if (runway.current) {
       const el = runway.current;
       const rect = el.getBoundingClientRect();
       const top = rect.top + window.scrollY;
@@ -194,18 +216,13 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
         </div>
         
         {/* Chapter dots */}
-        <ol className="chapter-dots" aria-label="Story chapters" role="tablist">
+        <ol className="chapter-dots" aria-label="Story chapters">
           {story.map((item, index) => (
-            <li 
-              key={item.id} 
-              role="tab" 
-              aria-selected={active === index}
-              aria-label={`${item.name} chapter`}
-              onClick={() => jump(index)}
-              className={active === index ? 'is-active' : ''}
-            >
+            <li key={item.id} className={active === index ? 'is-active' : ''}>
+              <button type="button" aria-current={active === index ? 'step' : undefined} aria-label={`Go to ${item.name} chapter`} onClick={() => jump(index)}>
               <span className="dot" aria-hidden="true" />
               <span className="dot-label" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              </button>
             </li>
           ))}
         </ol>
@@ -233,28 +250,28 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
             </div>
             <div className="seal-center">
               <p data-beat>Oliver Payton & Alexander Say · Louisville + Remote</p>
-              <h1 data-beat>
-                Music for the feeling.<br />
-                <em>Audio for the way it reaches you.</em>
+              <h1 className="film-glyph-title note-glyph-heading" data-domain={domain} data-beat aria-label={`${subject} ${predicate} ${purpose}`}>
+                <NoteGlyphField phrase={[subject, predicate, purpose]} domain={domain} reduced={staticMode} />
+                <span className="sr-only">{`${subject} ${predicate} ${purpose}`}</span>
               </h1>
             </div>
           </div>
         </article>
         
-        {/* Scene 2: Portrait - Oliver at Piano */}
+        {/* Abstract service studies stand in until owner-approved imagery exists. */}
         <article className={`scene scene--portrait ${active === 1 ? 'active' : ''}`} data-scene data-index="1" style={{ '--position': '50% 65%' }}>
           <div className="scene-media">
             <div className="media-placeholder" aria-hidden="true">
               <svg viewBox="0 0 400 600" aria-hidden="true">
                 <rect fill={theme === 'navy' ? '#162a48' : '#e8e3da'} width="400" height="600" />
-                <text x="200" y="300" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">Oliver at Piano</text>
+                <text x="200" y="300" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">MUSIC / INPUT</text>
                 <path d="M100 450 Q200 380 300 450" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="2" fill="none" opacity="0.5" />
                 <circle cx="150" cy="420" r="30" fill="none" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="1.5" opacity="0.4" />
                 <circle cx="250" cy="420" r="30" fill="none" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="1.5" opacity="0.4" />
               </svg>
             </div>
           </div>
-          <span className="scene-credit">Photography by Oliver Payton</span>
+          <span className="scene-credit">Abstract musical study</span>
           <div className="scene-copy">
             <div className="story-line" data-beat>
               <p className="scene-kicker">02 · INPUT</p>
@@ -267,13 +284,13 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
           </div>
         </article>
         
-        {/* Scene 3: Ribbon - Alexander at Console */}
+        {/* Audio's companion scene uses the same intentional, non-documentary language. */}
         <article className={`scene scene--ribbon ${active === 2 ? 'active' : ''}`} data-scene data-index="2" style={{ '--position': '50% 55%' }}>
           <div className="scene-media">
             <div className="media-placeholder" aria-hidden="true">
               <svg viewBox="0 0 600 400" aria-hidden="true">
                 <rect fill={theme === 'navy' ? '#162a48' : '#e8e3da'} width="600" height="400" />
-                <text x="300" y="200" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">Alexander at Console</text>
+                <text x="300" y="200" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">AUDIO / HEAR</text>
                 <rect x="150" y="120" width="300" height="160" rx="8" fill="none" stroke={theme === 'navy' ? '#27b9b2' : '#27b9b2'} strokeWidth="2" opacity="0.5" />
                 <rect x="170" y="140" width="80" height="20" rx="3" fill={theme === 'navy' ? '#27b9b2' : '#27b9b2'} opacity="0.6" />
                 <rect x="260" y="140" width="80" height="20" rx="3" fill={theme === 'navy' ? '#27b9b2' : '#27b9b2'} opacity="0.4" />
@@ -283,7 +300,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
               </svg>
             </div>
           </div>
-          <span className="scene-credit">Photography by Alexander Say</span>
+          <span className="scene-credit">Abstract signal study</span>
           <div className="scene-copy">
             <div className="story-line" data-beat>
               <p className="scene-kicker">03 · HEAR</p>
@@ -291,7 +308,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
             </div>
           </div>
           <div className="story-line secondary" data-beat>
-            <strong>Perfect pitch. Twenty years at the piano.</strong>
+            <strong>Harmony, rhythm, balance, signal.</strong>
             <p>Harmony, rhythm, balance, signal. We turn an instinct into something you can work with — a chord map, a routing diagram, a clearer direction.</p>
           </div>
         </article>
@@ -302,7 +319,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
             <div className="media-placeholder" aria-hidden="true">
               <svg viewBox="0 0 400 600" aria-hidden="true">
                 <rect fill={theme === 'navy' ? '#162a48' : '#e8e3da'} width="400" height="600" />
-                <text x="200" y="280" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">Collaborative Session</text>
+                <text x="200" y="280" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#3a6494' : '#a5acb7'} textAnchor="middle" dominantBaseline="middle">MUSIC + AUDIO</text>
                 <circle cx="160" cy="400" r="40" fill="none" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="2" opacity="0.5" />
                 <circle cx="240" cy="400" r="40" fill="none" stroke={theme === 'navy' ? '#6fc7a5' : '#27b9b2'} strokeWidth="2" opacity="0.5" />
                 <line x1="160" y1="360" x2="240" y2="360" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="1.5" opacity="0.6" strokeDasharray="8 4" />
@@ -310,7 +327,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
               </svg>
             </div>
           </div>
-          <span className="scene-credit">Session documentation</span>
+          <span className="scene-credit">Abstract collaboration study</span>
           <div className="scene-copy">
             <div className="story-line" data-beat>
               <p className="scene-kicker">04 · PLAY</p>
@@ -329,7 +346,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
             <div className="media-placeholder" aria-hidden="true">
               <svg viewBox="0 0 600 400" aria-hidden="true">
                 <rect fill={theme === 'navy' ? '#102038' : '#d6d0c5'} width="600" height="400" />
-                <text x="300" y="180" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#5ab08f' : '#6fc7a5'} textAnchor="middle" dominantBaseline="middle">Event Space / Recording Room</text>
+                <text x="300" y="180" fontFamily="Georgia, serif" fontSize="24" fill={theme === 'navy' ? '#5ab08f' : '#6fc7a5'} textAnchor="middle" dominantBaseline="middle">ROOM / RESONANCE</text>
                 <ellipse cx="300" cy="280" rx="180" ry="60" fill="none" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="1.5" opacity="0.4" />
                 <line x1="120" y1="320" x2="480" y2="320" stroke={theme === 'navy' ? '#d4a843' : '#d84a4d'} strokeWidth="1" opacity="0.3" />
                 <circle cx="200" cy="260" r="15" fill={theme === 'navy' ? '#d4a843' : '#d84a4d'} opacity="0.6" />
@@ -338,7 +355,7 @@ function FilmHero({ person, onPerson, reduced, theme, onThemeToggle }) {
               </svg>
             </div>
           </div>
-          <span className="scene-credit">Venue documentation</span>
+          <span className="scene-credit">Abstract room study</span>
           <div className="scene-copy">
             <div className="story-line" data-beat>
               <p className="scene-kicker">05 · MAKE</p>
