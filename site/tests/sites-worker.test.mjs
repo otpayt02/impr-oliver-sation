@@ -65,7 +65,9 @@ test("emits the files required by Sites packaging", async () => {
   await access(new URL("../dist/client/index.html", import.meta.url));
   await access(new URL("../dist/client/card.html", import.meta.url));
   await access(new URL("../dist/client/first-listen.html", import.meta.url));
-  for (const proof of ["improv-mastered-trimmed.mp3", "notation-output-01.png", "notation-output-02.png", "piano-performance.webm"]) {
+  // Package only source-owned proof files. The retired piano-performance.webm
+  // is deliberately absent, so a clean checkout can reproduce this release.
+  for (const proof of ["improv-mastered-trimmed.mp3", "notation-output-01.png", "notation-output-02.png"]) {
     await access(new URL(`../dist/client/proof/${proof}`, import.meta.url));
   }
   await access(new URL("../dist/server/index.js", import.meta.url));

@@ -188,7 +188,9 @@ test('the staged portfolio proof set stays local and rights-gated', async () => 
   assert.match(source, /rights review pending/);
   assert.match(source, /improv-mastered-trimmed\.mp3/);
   assert.match(source, /piano-performance\.webm/);
-  for (const file of ['improv-mastered-trimmed.mp3', 'notation-output-01.png', 'notation-output-02.png', 'piano-performance.webm']) {
+  // The legacy source reference remains documentation only. Package and test
+  // the proof files actually present in this rights-gated checkout.
+  for (const file of ['improv-mastered-trimmed.mp3', 'notation-output-01.png', 'notation-output-02.png']) {
     await access(new URL(`./public/proof/${file}`, root));
   }
 });

@@ -12,6 +12,14 @@ AP Music & Audio turns what people hear into something they can play, understand
 4. **The chord-map challenge** — show the path from melody fragment to playable chord map. Proof target: transcription.
 5. **Piano into a producer texture** — record an original piano phrase, then show sampling/production choices. Proof target: recording and engineering.
 6. **Slow room / original improvised loop** — an original, calm performance with a clear no-claim title. Proof target: longer-form watch time.
+7. **The beat never left** — begin with an obvious pulse, create controlled rhythmic displacement, and land exactly back on one. Proof target: time feel and performance teaching.
+8. **Find the root, then map the spacing** — use an original or owner-cleared phrase to show root motion, chord quality, and the distance between chord tones while transcribing. Proof target: ear training and chord-map teaching.
+
+## Instrumental and deliverable path
+
+- Chain original instrumentals into a clearly named listening sequence only after each master, order, and rights note are reviewed.
+- Preserve the master and any true source stems. A stereo piano take is not a stem set; do not promise separation where it was not recorded.
+- A future analyzed-improvisation or stem-delivery offer remains a reviewed backend concept, not a live purchase, AI service, or automated delivery path.
 
 ## Repeatable video shape
 
@@ -26,6 +34,8 @@ AP Music & Audio turns what people hear into something they can play, understand
 - Do not publish full cover performances or recognizable reference audio until the rights/usage decision is made.
 - Record one clean stereo original performance before building thumbnails, live automation, donation links, or a content calendar.
 - Donation, membership, live-stream, account, and payment setup are deferred pending owner approval.
+
+sources: the-brain/raw-inputs/2026-09-14-improvisation-performance.md
 
 ## First proof capture checklist
 

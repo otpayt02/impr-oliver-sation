@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { ServiceColumns, Approach, Inquiry, useReducedMotion } from './StudioExperience.jsx';
+import { useEffect, useRef, useState } from 'react';
+import { ServiceColumns, Approach, Inquiry } from './StudioExperience.jsx';
 import { PracticeCheckout } from './PracticeCheckout.jsx';
+import { choosePhrase, servicePhrases } from './service-phrases.js';
+import { HeroGlyphField } from './HeroGlyphField.jsx';
 import './duet.css';
 
 // These are illustrations of the work, not recordings or client deliverables.
@@ -19,10 +21,39 @@ function SoundDrawing({ audio = false }) {
   </svg>;
 }
 
+// This release defaults to motion at every viewport size. Only an explicit OS
+// reduced-motion preference freezes the cycling header and scroll behavior.
+function useDuetReducedMotion() {
+  const queryText = '(prefers-reduced-motion: reduce)';
+  const [reduced, setReduced] = useState(() => window.matchMedia(queryText).matches);
+  useEffect(() => {
+    const query = window.matchMedia(queryText);
+    const change = () => setReduced(query.matches);
+    query.addEventListener('change', change);
+    return () => query.removeEventListener('change', change);
+  }, []);
+  return reduced;
+}
+
 export function DuetLanding() {
   const [person, setPerson] = useState('oliver');
   const [selected, setSelected] = useState('');
-  const reduced = useReducedMotion();
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [motionEnabled, setMotionEnabled] = useState(true);
+  const phraseHistory = useRef([0]);
+  const reduced = useDuetReducedMotion();
+  const nextPhrase = () => {
+    const index = choosePhrase(phraseHistory.current);
+    phraseHistory.current = [...phraseHistory.current.slice(-8), index];
+    setPhraseIndex(index);
+  };
+  useEffect(() => {
+    if (reduced || !motionEnabled) return undefined;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) nextPhrase();
+    }, 5800);
+    return () => window.clearInterval(timer);
+  }, [motionEnabled, reduced]);
   const selectService = title => {
     setSelected(title);
     document.getElementById('book')?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' });
@@ -35,9 +66,21 @@ export function DuetLanding() {
       <a className="duet-contact" href="#book">Start a conversation <span aria-hidden="true">↗</span></a>
     </header>
     <section className="duet-intro" aria-labelledby="duet-title">
-      <p className="duet-byline">Oliver Payton & Alexander Say</p>
-      <h1 id="duet-title">Two sides of{' '}<br className="duet-mobile-break" /><em>the same sound.</em></h1>
+      <p className="duet-byline">Oliver Payton · Music & Audio</p>
+      <h1 id="duet-title" className={`duet-cycle-title ${reduced ? 'is-reduced' : ''}`} key={phraseIndex} aria-label={servicePhrases[phraseIndex].slice(0, 3).join(' ')}>
+        <span className="duet-cycle-action">{servicePhrases[phraseIndex][0]}</span>{' '}
+        <span className="duet-cycle-join">your</span>{' '}<br className="duet-mobile-break" />
+        <span className="duet-cycle-subject">{servicePhrases[phraseIndex][1]}</span>{' '}
+        <em className="duet-cycle-ending">{servicePhrases[phraseIndex][2]}</em>
+      </h1>
+      <HeroGlyphField phraseIndex={phraseIndex} animate={motionEnabled && !reduced} reduced={reduced} />
       <p>From the first idea to something you can hear.</p>
+      <div className="duet-motion-controls" aria-label="Header phrase controls">
+        <button type="button" aria-pressed={motionEnabled && !reduced} disabled={reduced} onClick={() => setMotionEnabled(enabled => !enabled)}>
+          {reduced ? 'Motion reduced' : motionEnabled ? 'Motion on' : 'Motion off'}
+        </button>
+        <button type="button" onClick={nextPhrase}>Next phrase ↗</button>
+      </div>
     </section>
     <section className="duet-offers" aria-label="Music and Audio services">
       <article className="duet-offer duet-music" aria-labelledby="music-offer-title">
@@ -55,12 +98,12 @@ export function DuetLanding() {
         <div className="duet-offer-bottom"><p>Recording & production<br />Mix feedback & signal flow<br />Live sound & room setup</p><a href="#audio-make">Explore Audio <span aria-hidden="true">↗</span></a></div>
       </article>
     </section>
-    <div className="duet-bridge"><p>Independent minds. A shared love of sound.</p><a href="#offer">One clear place to begin: First Listen <span aria-hidden="true">↗</span></a></div>
+    <div className="duet-bridge"><p>One practice. Music, audio, and the space between.</p><a href="#offer">One clear place to begin: First Listen <span aria-hidden="true">↗</span></a></div>
     <ServiceColumns person={person} onPerson={setPerson} onSelect={selectService} />
     <Approach />
     <section className="studio-first-listen" id="offer"><p className="studio-eyebrow">One clear place to begin</p><h2>First Listen<span>.</span></h2><div><p>One reference. A piano response.<br />A key and chord map. A focused revision.</p><a className="studio-button" href="#checkout">Try the $95 practice order ↗</a><button className="text-button" onClick={() => selectService('First Listen')}>Discuss First Listen</button><small>Draft offer · confirm scope and timing before a real booking.</small></div></section>
     <Inquiry person={person} selected={selected} />
     <PracticeCheckout />
-    <footer className="studio-footer"><a href="#top" className="footer-monogram" aria-label="AP home">ap.</a><p>Oliver Payton & Alexander Say<br /><span>Music / audio / the space between.</span></p><a href="#checkout">Practice checkout ↗</a><a href="#top">Back to the beginning ↑</a></footer>
+    <footer className="studio-footer"><a href="#top" className="footer-monogram" aria-label="AP home">ap.</a><p>Oliver Payton<br /><span>Music / audio / the space between.</span></p><a href="#checkout">Practice checkout ↗</a><a href="#top">Back to the beginning ↑</a></footer>
   </main>;
 }

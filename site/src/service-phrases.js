@@ -12,6 +12,18 @@ export const servicePhrases = [
   ['Develop', 'ear', 'one note at a time.', 'music'],
   ['Connect', 'equipment', 'with intention.', 'audio'],
   ['Arrange', 'melody', 'for a new feeling.', 'music'],
+  ['Shape', 'idea', 'into a playable part.', 'music'],
+  ['Listen', 'room', 'before the moment arrives.', 'audio'],
+  ['Map', 'chords', 'to what your ear hears.', 'music'],
+  ['Clear', 'path', 'from source to speaker.', 'audio'],
+  ['Make', 'rehearsal', 'feel more like the room.', 'music'],
+  ['Balance', 'sound', 'with purpose.', 'audio'],
+  ['Learn', 'passage', 'one honest note at a time.', 'music'],
+  ['Set', 'signal', 'up for a cleaner take.', 'audio'],
+  ['Carry', 'song', 'into the performance.', 'music'],
+  ['Hear', 'detail', 'before it gets lost.', 'audio'],
+  ['Give', 'feeling', 'a place to land.', 'music'],
+  ['Hold', 'space', 'for what comes through.', 'audio'],
 ];
 
 export function choosePhrase(history, random = Math.random) {

@@ -1,4 +1,12 @@
 {
   "_comment": "Source registry (handoff §3): each entry = { path, date, type, era, devices }",
-  "sources": []
+  "sources": [
+    {
+      "path": "the-brain/raw-inputs/2026-09-14-improvisation-performance.md",
+      "date": "2026-09-14",
+      "type": "direct-message-raw-input",
+      "era": "2026 Sentiment Cartographer",
+      "devices": ["persistent internal pulse", "piano as percussion", "delayed return to one", "hands as time and lead"]
+    }
+  ]
 }

@@ -1,5 +1,12 @@
 # Prototype Instructions
 
+### September 14 — solo AP Music & Audio surface
+
+- The mounted `DuetLanding` is Oliver Payton's solo Music & Audio practice. Do not reintroduce Alexander Say, co-founder language, a collaborator selector, or shared-work claims into the active landing without a new explicit instruction.
+- Keep the complete-phrase headline cycle: `your` is a fixed white anchor, the middle phrase is blue, and the final phrase is violet. The sequence pauses for reduced motion and remains visitor-controllable.
+- The animated hero words are composed only of mini music glyphs. On each phrase change, the same bounded glyph pool must stagger in from varied directions and retarget into the outline and fill of the next words; no solid letter face or guide outline may be visible during full motion.
+- The site may name piano, music, audio, teaching, recording setup, and AI-assisted workflow education only as Oliver-provided capabilities. Do not represent an improvisation analyzer, stem delivery, payment, booking, or public portfolio release as live until it has an approved artifact and owner decision.
+
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
 Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
@@ -10,6 +17,11 @@ Before making substantial visual changes, use the Product Design plugin's `get-c
 - The requested motion narrative is chaotic ASCII-dither/music notation resolving into organized waves as scroll progresses; keep native scrolling, a top progress line, and complete reduced-motion fallback.
 - Return three circular, text-led service wayfinders as useful links (play, learn, make), rather than decorative badges. Pointer depth belongs on service cards only; do not replace the native cursor or add a full-page cursor trail.
 - User named piano, bass, drums, audio event setup, teaching, and curated study/workout playlists. Keep those items truthful: the playlists are an in-development practice aid unless approved content is supplied.
+
+### September 14 — private two-shade release candidate
+
+- For the next private AP Music & Audio Sites release, `src/main.jsx` mounts `DuetLanding` again. Preserve its equal Music/Audio offers and the inherited full service, inquiry, First Listen, and rehearsal-only checkout contracts.
+- The Duet intro cycles complete four-part phrases as one unit; all colored words (including the violet ending) change together. Motion is on by default, pauses only when the visitor turns it off or reduced motion applies, and must remain visibility-gated.
 
 ### September 13 — service foreground cycling
 
