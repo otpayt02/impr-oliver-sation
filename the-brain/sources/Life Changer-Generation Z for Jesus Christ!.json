@@ -1,0 +1,2293 @@
+{
+  "titleKaren": "တၢ်အိၣ်မူစီတလဲၣ် ကၠ့စံအဲၣ်ဝဲခရံ",
+  "titleEnglish": "Life Changer/Generation Z for Jesus Christ!",
+  "style": "Go-Go",
+  "category": "",
+  "key": "G",
+  "originalKey": "G",
+  "bpm": 120,
+  "meter": "4/4",
+  "group": "Youth",
+  "instruments": [
+    "Piano 1",
+    "Piano 2",
+    "Electric Guitar",
+    "Drums",
+    "Electric Bass"
+  ],
+  "sourceKind": "synthetic",
+  "reviewState": "unreviewed",
+  "lyrics": "",
+  "sections": [
+    {
+      "id": "e7dcef48-219f-410d-b770-a0ad5c48457a",
+      "name": "INTRO",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "dot": false,
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "xMarks": 0,
+              "circle": true,
+              "dot": false
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        }
+      ],
+      "measuresPerRow": 8
+    },
+    {
+      "id": "792de4b1-68ad-4daa-b1d6-0c624e6b973c",
+      "name": "VERSE",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ],
+          "roll": true
+        }
+      ],
+      "measuresPerRow": 8
+    },
+    {
+      "id": "8ad774c1-ac30-478d-8082-8f8a90490870",
+      "name": "CHORUS",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        }
+      ],
+      "measuresPerRow": 8
+    },
+    {
+      "id": "f19dc93f-af1e-46e8-8850-c00aea2664ba",
+      "name": "SOLO",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        }
+      ],
+      "measuresPerRow": 8
+    },
+    {
+      "id": "41917a6e-738a-47a2-a18c-10a076ef1f56",
+      "name": "VERSE",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        }
+      ],
+      "measuresPerRow": 8
+    },
+    {
+      "id": "9c1b1582-0dad-41d3-9b72-69b8f097eb4f",
+      "name": "CHORUS",
+      "preMeasure": null,
+      "measures": [
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "B",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "E",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "A",
+                "minor": true
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "D"
+              }
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            },
+            {
+              "chord": null,
+              "circle": true,
+              "dot": false,
+              "xMarks": 0
+            }
+          ],
+          "roll": true
+        },
+        {
+          "beats": [
+            {
+              "chord": {
+                "root": "G"
+              },
+              "xMarks": 1
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            },
+            {
+              "chord": null
+            }
+          ]
+        }
+      ],
+      "measuresPerRow": 8
+    }
+  ],
+  "slurs": [
+    {
+      "start": "5:31:0",
+      "end": "5:31:3"
+    }
+  ]
+}
