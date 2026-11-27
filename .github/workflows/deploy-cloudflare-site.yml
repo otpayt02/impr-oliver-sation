@@ -3,6 +3,62 @@
 #   CLOUDFLARE_API_TOKEN  (dash.cloudflare.com → My Profile → API Tokens → "Edit Cloudflare Workers" template)
 #   CLOUDFLARE_ACCOUNT_ID (Workers overview page, right sidebar)
 # Free tier covers this; see docs/upgrades-later.md — do not pay for anything here.
+#
+# ============================================================================
+# THE CAST — every tool in this script, what it is, where it came from, why
+# you'd use it on a production site, and a concrete example. The code below
+# is unchanged by these comments; this block is the teaching layer.
+#
+# GitHub Actions (the stage everything below performs on)
+#   History: Announced Oct 2018, released to everyone Nov 2019; overtook
+#     Travis CI as the #1 CI/CD tool within 18 months.
+#   Why for a production site: Automation lives next to your code — no build
+#     server to babysit, free for public repos.
+#   Example: Push a typo fix at 2am, fixed site is live by 2:03am.
+#
+# actions/checkout (Step 1)
+#   History: GitHub's official action, pinned to v4 here.
+#   Why for a production site: The robot's computer starts blank — this is
+#     the `git clone` that puts your code on it.
+#   Example: Without it, `npm ci` fails: no `package.json` exists.
+#
+# actions/setup-node (Step 2)
+#   History: GitHub's official Node installer.
+#   Why for a production site: Pins Node 20 so the robot runs the same Node
+#     you do.
+#   Example: "Works on my machine" now means "works on the robot."
+#
+# npm ci (Step 3)
+#   History: Added to npm March 2018 (v5.7) specifically for CI.
+#   Why for a production site: Installs exactly what `package-lock.json`
+#     says; fails loudly on mismatch instead of silently upgrading.
+#   Example: Today's and next month's deploy get identical dependencies.
+#
+# Vite — `npm run build` (Step 4)
+#   History: Created 2020 by Evan You; now ~65M downloads/week.
+#   Why for a production site: Turns readable source into tiny, minified
+#     files that load fast on customer phones.
+#   Example: Scattered `.js`/`.css` → one optimized `dist/` folder.
+#
+# Wrangler + wrangler-action (Step 5)
+#   History: Cloudflare's officially supported CLI since 2019; v4 in 2025.
+#   Why for a production site: `wrangler deploy` is the official upload path
+#     to Cloudflare's 335+ cities.
+#   Example: Same as typing `npx wrangler deploy`, minus the typing.
+#
+# Cloudflare Workers (where Step 5 ships the site)
+#   History: Launched Sept 2017, public March 2018; runs on V8 isolates that
+#     cold-start in ~5ms.
+#   Why for a production site: Global, auto-scales, no server to patch, free
+#     tier.
+#   Example: Louisville and Seattle customers both hit a nearby data center.
+#
+# GitHub Secrets (how Step 5 is allowed to touch the Cloudflare account)
+#   History: Core Actions feature since launch.
+#   Why for a production site: Lets the robot prove it can touch your
+#     Cloudflare account without exposing the token.
+#   Example: Leaked token → revoke just that one in the dashboard.
+# ============================================================================
 name: deploy-cloudflare-site
 on:
   workflow_dispatch:
@@ -15,15 +71,19 @@ jobs:
     permissions:
       contents: read
     steps:
+      # Step 1 of 5 — actions/checkout: the robot's computer starts blank, so this git-clones your code onto it first.
       - uses: actions/checkout@v4
+      # Step 2 of 5 — actions/setup-node: installs Node 20 so the robot runs the same Node you do.
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
           cache-dependency-path: site/package-lock.json
+      # Step 3 of 5 — npm ci: installs exactly what package-lock.json says; fails loudly on any mismatch.
       - name: install deps
         working-directory: site
         run: npm ci
+      # Step 4 of 5 — Vite build, only if a build script exists: turns readable source into tiny, fast files; if there's no build script, wrangler bundles the worker itself.
       - name: build frontend if build script exists
         working-directory: site
         run: |
@@ -32,6 +92,7 @@ jobs:
           else
             echo "no build script — wrangler handles worker bundling"
           fi
+      # Step 5 of 5 — Wrangler deploy: the official upload path that ships the site to Cloudflare Workers worldwide, using the token from GitHub Secrets.
       - name: deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
